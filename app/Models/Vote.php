@@ -12,7 +12,7 @@ class Vote extends Model
 
     protected $fillable = [
         'stars',
-        'descriprion'
+        'description'
     ];
     //una Vote è collegato a + dottors
     public function Vote(): BelongsToMany
