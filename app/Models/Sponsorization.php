@@ -16,7 +16,7 @@ class Sponsorization extends Model
         'durata'
     ];
     //una Sponsorization è collegato a + dottors
-    public function Sponsorization(): BelongsToMany
+    public function sponsorization(): BelongsToMany
     {
         return $this->belongsToMany(Sponsorization::class);
     }
