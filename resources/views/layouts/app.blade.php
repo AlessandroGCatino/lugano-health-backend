@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Lugano-Health</title>
+    <title>Lugano Health</title>
 
 
     <!-- Fonts -->
