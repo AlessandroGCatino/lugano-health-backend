@@ -14,10 +14,18 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
 
             $table->id();
-            $table->string("name");
-            $table->string("surname");
-            $table->string("address");
-            $table->string("phone_number");
+            $table->string("name")->require();
+            $table->string("surname")->require();
+            $table->text("performaces")->nullable();
+            $table->string("CV")->nullable();
+            $table->string("address")->require();
+            $table->string("ProfilePic")->nullable();
+            $table->string("phone_number")->nullable();
+
+            $table->unsignedBigInteger("user_id")->nullable()->after("id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("set null");
+
+
             $table->timestamps();
         });
     }
