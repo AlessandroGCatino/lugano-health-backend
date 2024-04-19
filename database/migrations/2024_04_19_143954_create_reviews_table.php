@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+
+            $table->string('user_name')->required();
+            $table->string('user_mail')->required();
+            $table->text('comment')->nullable();
+            $table->date('date_sent');
+
+            $table->unsignedBigInteger('doctor_id')->nullable();
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('set null');
+
             $table->timestamps();
         });
     }
