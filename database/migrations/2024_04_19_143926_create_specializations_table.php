@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('specializations', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255)->required();
+            $table->string('slug', 255)->unique();
             $table->timestamps();
         });
     }
