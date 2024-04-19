@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sponsorizations', function (Blueprint $table) {
             $table->id();
             $table->decimal('price', 4,2);
-            $table->varChar('name', 255)->unique();
+            $table->string('name', 255)->unique();
             $table->smallInteger('durata');
             $table->timestamps();
         });
