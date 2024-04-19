@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
 
             $table->id();
-            $table->string("name")->require();
-            $table->string("surname")->require();
+            $table->string("name")->required();
+            $table->string("surname")->required();
             $table->text("performaces")->nullable();
             $table->string("CV")->nullable();
-            $table->string("address")->require();
+            $table->string("address")->required();
             $table->string("ProfilePic")->nullable();
             $table->string("phone_number")->nullable();
 
