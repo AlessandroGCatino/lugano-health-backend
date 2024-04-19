@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('doctor_vote', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('doctor_id')->nullable();
+            $table->unsignedBigInteger('doctor_id')->required();
             $table->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('vote_id')->nullable();
+            $table->unsignedBigInteger('vote_id')->required();
             $table->foreign('vote_id')->references('id')->on('votes')->cascadeOnDelete();
 
             $table->primary(['doctor_id','vote_id']);

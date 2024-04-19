@@ -19,8 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger("sponsorization_id")->nullable();
             $table->foreign("sponsorization_id")->references("id")->on("sponsorizations")->cascadeOnDelete();
             
-            $table->dateTime("start")->require();
-            $table->dateTime("deadline")->require();
+            $table->dateTime("start")->required();
+            $table->dateTime("deadline")->required();
         });
     }
 
