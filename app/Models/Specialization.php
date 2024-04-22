@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 
 class Specialization extends Model
@@ -14,6 +15,10 @@ class Specialization extends Model
         'name',
         'slug',
     ];
+
+    public static function generateSlug($name){
+        return Str::slug($name, '-');
+    }
 
     public function  doctors():belongsToMany{
         return $this->belongsToMany(Doctor::class);

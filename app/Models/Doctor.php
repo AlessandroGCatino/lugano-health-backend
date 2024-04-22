@@ -21,6 +21,8 @@ class Doctor extends Model
         "CV"
     ];
 
+    
+
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }

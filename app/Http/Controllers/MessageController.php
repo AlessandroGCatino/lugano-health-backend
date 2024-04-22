@@ -13,7 +13,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+
+        return view('pages.messages.index', compact('messages'));
     }
 
     /**
@@ -21,7 +23,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.messages.create');
     }
 
     /**
@@ -29,7 +31,10 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $new_message = Message::create($validated_data);
+        return redirect()->route('pages.messages.index');
     }
 
     /**
@@ -37,7 +42,8 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        return view('pages.messages.show', compact('message'));
+
     }
 
     /**
@@ -45,7 +51,8 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
+        return view('pages.messages.edit', compact('message'));
+
     }
 
     /**
@@ -53,7 +60,10 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        //
+        $validated_data = $request->validated();
+
+        $message->update($validated_data);
+        return redirect()->route('pages.messages.index');
     }
 
     /**
@@ -61,6 +71,7 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return redirect()->route('dashboard.messages.index');
     }
 }
