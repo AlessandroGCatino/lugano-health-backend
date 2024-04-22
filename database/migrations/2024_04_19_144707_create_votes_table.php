@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
             $table->smallInteger('stars')->nullable(false);
-            $table->string('descriprion', 255)->nullable(false);
+            $table->string('description', 255)->nullable(false);
             $table->timestamps();
         });
     }

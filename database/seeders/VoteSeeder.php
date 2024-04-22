@@ -13,17 +13,16 @@ class VoteSeeder extends Seeder
      */
     public function run(): void
     {
-        $starRatings = [
-            ['stars' => 1, 'description' => 'Pessimo'],
-            ['stars' => 2, 'description' => 'Scarso'],
-            ['stars' => 3, 'description' => 'Mediocre'],
-            ['stars' => 4, 'description' => 'Buono'],
-            ['stars' => 5, 'description' => 'Eccellente'],
-        ];
+        $starRatings = ['Pessimo','Scarso','Mediocre','Buono','Eccellente'];
 
-        foreach ($starRatings as $element) {
-            Vote::create($element);
+        for ($i=0; $i < 5 ; $i++) { 
+            $newVote = new Vote();
+            $newVote->stars = $i+1;
+            $newVote->description = $starRatings[$i];
+            
+            $newVote->save();
         }
-        
     }
+        
 }
+
