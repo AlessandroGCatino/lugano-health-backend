@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
-use App\Models\Specialization;
 
 class MessageController extends Controller
 {
@@ -14,9 +13,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $message = Message::all();
+        $messages = Message::all();
 
-        return view('pages.index', compact('message'));
+        return view('pages.messages.index', compact('messages'));
     }
 
     /**
@@ -24,7 +23,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('pages.dashboard.messages.create');
+        return view('pages.messages.create');
     }
 
     /**
@@ -32,7 +31,10 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $new_message = Message::create($validated_data);
+        return redirect()->route('pages.messages.index');
     }
 
     /**
@@ -40,7 +42,8 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        return view('pages.messages.show', compact('message'));
+
     }
 
     /**
@@ -48,7 +51,8 @@ class MessageController extends Controller
      */
     public function edit(Message $message)
     {
-        //
+        return view('pages.messages.edit', compact('message'));
+
     }
 
     /**
@@ -56,7 +60,10 @@ class MessageController extends Controller
      */
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        //
+        $validated_data = $request->validated();
+
+        $message->update($validated_data);
+        return redirect()->route('pages.messages.index');
     }
 
     /**
@@ -64,6 +71,7 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return redirect()->route('dashboard.messages.index');
     }
 }

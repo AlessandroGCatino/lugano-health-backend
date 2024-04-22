@@ -13,7 +13,9 @@ class VoteController extends Controller
      */
     public function index()
     {
-        //
+        $votes = Vote::all();
+
+        return view('pages.votes.index', compact('votes'));
     }
 
     /**
@@ -21,7 +23,8 @@ class VoteController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.votes.create');
+
     }
 
     /**
@@ -29,7 +32,10 @@ class VoteController extends Controller
      */
     public function store(StoreVoteRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $new_vote = Vote::create($validated_data);
+        return redirect()->route('pages.votes.index');
     }
 
     /**
@@ -37,7 +43,8 @@ class VoteController extends Controller
      */
     public function show(Vote $vote)
     {
-        //
+        return view('pages.votes.show', compact('vote'));
+
     }
 
     /**
@@ -45,7 +52,8 @@ class VoteController extends Controller
      */
     public function edit(Vote $vote)
     {
-        //
+        return view('pages.votes.edit', compact('vote'));
+
     }
 
     /**
@@ -53,7 +61,10 @@ class VoteController extends Controller
      */
     public function update(UpdateVoteRequest $request, Vote $vote)
     {
-        //
+        $validated_data = $request->validated();
+
+        $vote->update($validated_data);
+        return redirect()->route('pages.votes.index');
     }
 
     /**
@@ -61,6 +72,7 @@ class VoteController extends Controller
      */
     public function destroy(Vote $vote)
     {
-        //
+        $vote->delete();
+        return redirect()->route('dashboard.votes.index');
     }
 }
