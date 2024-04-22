@@ -5,7 +5,7 @@
 <div class="container mt-3 ">
     <h1 class="mb-3">Crea nuovo Dottore</h1>
 
-    {{ dd($user)}}
+    {{ dd($datas)}}
 
     @if ($errors->any())
         <div class="alert alert-danger ">
