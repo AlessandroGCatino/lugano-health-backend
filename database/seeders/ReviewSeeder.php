@@ -47,13 +47,13 @@ class ReviewSeeder extends Seeder
         ];
 
         for($i=0; $i<20; $i++){
-            $newMessage = new Review();
-            $newMessage->user_name = $usernames[$i];
-            $newMessage->user_mail = $emails[$i];
-            $newMessage->comment = $recensioni_dottori[$i];
-            $newMessage->date_sent = $dates[$i];
-            $newMessage->doctor_id = $i+1;
-            $newMessage->save();
+            $newReview = new Review();
+            $newReview->user_name = $usernames[$i];
+            $newReview->user_mail = $emails[$i];
+            $newReview->comment = $recensioni_dottori[$i];
+            $newReview->date_sent = $dates[$i];
+            $newReview->doctor_id = $i+1;
+            $newReview->save();
         };
     }
 }
