@@ -13,7 +13,7 @@ class ReviewSeeder extends Seeder
      */
     public function run(): void
     {
-        $usernames = ["Alessandro Conti", "Andrea Greco", "Giuseppe Marini", "Giovanni Ferrari", "Alberto Costa", "Davide Russo", "Fabio Vitale", "Francesco Pellegrini", "Mario Barbieri", "Antonio Verdi", "Luca Mancini", "Paolo Bianchi", "Marco Rossi", "Lorenzo Romano", "Simone Moretti", "Stefano Sanna", "Federico Galli", "Roberto Rizzo", "Riccardo Esposito", "Mario Greco"];
+        $usernames = ["AlessandroConti", "AndreaGreco", "GiuseppeMarini", "GiovanniFerrari", "AlbertoCosta", "DavideRusso", "FabioVitale", "FrancescoPellegrini", "MarioBarbieri", "AntonioVerdi", "LucaMancini", "PaoloBianchi", "MarcoRossi", "LorenzoRomano", "SimoneMoretti", "StefanoSanna", "FedericoGalli", "RobertoRizzo", "RiccardoEsposito", "MarioGreco"];
 
         $dates = [ "2023-08-23", "2023-11-06", "2023-10-18", "2023-10-26", "2023-12-20", "2023-07-29", "2023-05-10", "2023-06-14", "2023-08-02", "2023-09-05", "2023-12-27", "2023-08-07", "2023-12-06", "2023-02-14", "2023-08-15", "2023-10-13", "2023-04-14", "2023-06-01", "2023-07-14", "2023-08-30"];
 
@@ -52,7 +52,7 @@ class ReviewSeeder extends Seeder
             $newReview->user_mail = $emails[$i];
             $newReview->comment = $recensioni_dottori[$i];
             $newReview->date_sent = $dates[$i];
-            $newReview->doctor_id = $i+1;
+            // $newReview->doctor_id = $i+1;
             $newReview->save();
         };
     }
