@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
+use App\Models\Specialization;
 
 class MessageController extends Controller
 {
@@ -13,7 +14,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $message = Message::all();
+
+        return view('pages.index', compact('message'));
     }
 
     /**
@@ -21,7 +24,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.dashboard.messages.create');
     }
 
     /**
