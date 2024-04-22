@@ -20,10 +20,10 @@ class DoctorController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($id, $name, $email)
+    public function create()
     {
-        dd($id, $name, $email);
-        return view("pages.doctors.create", compact("userRegistered"));
+        
+        return view("pages.doctors.create");
     }
 
     /**
