@@ -13,7 +13,9 @@ class SponsorizationController extends Controller
      */
     public function index()
     {
-        //
+        $sponsorization = Sponsorization::all();
+
+        return view('pages.sponsorizations.index', compact('sponsorizations'));
     }
 
     /**
@@ -21,7 +23,8 @@ class SponsorizationController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.sponsorizations.create');
+
     }
 
     /**
@@ -29,7 +32,10 @@ class SponsorizationController extends Controller
      */
     public function store(StoreSponsorizationRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $new_sponsorization = Sponsorization::create($validated_data);
+        return redirect()->route('pages.sponsorizations.index');
     }
 
     /**
@@ -37,7 +43,7 @@ class SponsorizationController extends Controller
      */
     public function show(Sponsorization $sponsorization)
     {
-        //
+        return view('pages.sponsorizations.show', compact('sponsorization'));
     }
 
     /**
@@ -45,7 +51,8 @@ class SponsorizationController extends Controller
      */
     public function edit(Sponsorization $sponsorization)
     {
-        //
+        return view('pages.sponsorizations.edit', compact('sponsorization'));
+
     }
 
     /**
@@ -53,7 +60,10 @@ class SponsorizationController extends Controller
      */
     public function update(UpdateSponsorizationRequest $request, Sponsorization $sponsorization)
     {
-        //
+        $validated_data = $request->validated();
+
+        $sponsorization->update($validated_data);
+        return redirect()->route('pages.sponsorizations.index');
     }
 
     /**
@@ -61,6 +71,7 @@ class SponsorizationController extends Controller
      */
     public function destroy(Sponsorization $sponsorization)
     {
-        //
+        $sponsorization->delete();
+        return redirect()->route('dashboard.sponsorizations.index');
     }
 }

@@ -13,7 +13,9 @@ class SpecializationController extends Controller
      */
     public function index()
     {
-        //
+        $specialization = Specialization::all();
+
+        return view('pages.specializations.index', compact('specializations'));
     }
 
     /**
@@ -21,7 +23,8 @@ class SpecializationController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.specializations.create');
+
     }
 
     /**
@@ -29,7 +32,10 @@ class SpecializationController extends Controller
      */
     public function store(StoreSpecializationRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $new_specialization = Specialization::create($validated_data);
+        return redirect()->route('pages.specializations.index');
     }
 
     /**
@@ -37,7 +43,8 @@ class SpecializationController extends Controller
      */
     public function show(Specialization $specialization)
     {
-        //
+        return view('pages.specializations.show', compact('specialization'));
+
     }
 
     /**
@@ -45,7 +52,8 @@ class SpecializationController extends Controller
      */
     public function edit(Specialization $specialization)
     {
-        //
+        return view('pages.specializations.edit', compact('specialization'));
+
     }
 
     /**
@@ -53,7 +61,10 @@ class SpecializationController extends Controller
      */
     public function update(UpdateSpecializationRequest $request, Specialization $specialization)
     {
-        //
+        $validated_data = $request->validated();
+
+        $specialization->update($validated_data);
+        return redirect()->route('pages.specializations.index');
     }
 
     /**
@@ -61,6 +72,7 @@ class SpecializationController extends Controller
      */
     public function destroy(Specialization $specialization)
     {
-        //
+        $specialization->delete();
+        return redirect()->route('dashboard.specializations.index');
     }
 }
