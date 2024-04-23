@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
+use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = Doctor::all();
+
+        return view('pages.doctors.index', compact('doctors'));
     }
 
     /**
@@ -22,7 +25,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        
+
         return view("pages.doctors.create");
     }
 
@@ -31,7 +34,10 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $new_doctor = Doctor::create($validated_data);
+        return redirect()->route('pages.doctors.index');
     }
 
     /**
@@ -39,7 +45,7 @@ class DoctorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('pages.doctors.show', compact('doctors'));
     }
 
     /**
@@ -47,7 +53,7 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('pages.doctors.edit', compact('doctors'));
     }
 
     /**
@@ -55,7 +61,10 @@ class DoctorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated_data = $request->validated();
+        $doctor = Doctor::findOrFail($id);
+        $doctor->update($validated_data);
+        return redirect()->route('pages.doctors.index');
     }
 
     /**
@@ -63,6 +72,8 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+        $doctor->delete();
+        return redirect()->route('pages.doctors.index');
     }
 }
