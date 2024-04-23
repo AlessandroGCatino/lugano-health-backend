@@ -43,17 +43,17 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Doctor $doctor)
     {
-        return view('pages.doctors.show', compact('doctors'));
+        return view('pages.doctors.show', compact('doctor'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Doctor $doctor)
     {
-        return view('pages.doctors.edit', compact('doctors'));
+        return view('pages.doctors.edit', compact('doctor'));
     }
 
     /**
