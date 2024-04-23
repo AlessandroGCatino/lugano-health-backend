@@ -1,27 +1,47 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <h1 class="mt-2 fw-bold">Add a new technology:</h1>
+@section("content")
 
-        {{-- <form action="{{ route('pages.doctors.store') }}" method="POST">
+<div class="container mt-3 ">
+    <h1 class="mb-3">Crea nuovo Dottore</h1>
 
-            @csrf
+    {{ dd($datas)}}
 
-            <div class="my-3">
-                <label for="name" class="form-label">Insert The Type</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                    aria-describedby="name" name="name" value='{{ old('name') }}' required>
-                @error('name')
-                    <div class="alert alert-danger mt-1">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+    @if ($errors->any())
+        <div class="alert alert-danger ">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
+    <form action="{{route("doctors.store")}}" method="POST" enctype="multipart/form-data">
 
-            <button type="submit" class="btn btn-primary d-block ms-auto">ADD</button>
-        </form> --}}
+        @csrf
+    
+        <div class="mb-3">
+            <label for="title" class="form-label">Nome</label>
+            <input
+                type="text"
+                class="form-control"
+                name="title"
+                id="title" placeholder="{{ $user->name }}"/>
+        </div>
 
-    </div>
+        
+        
+    
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            Crea
+        </button>
+        
+    </form>
+
+</div>
+
 @endsection
