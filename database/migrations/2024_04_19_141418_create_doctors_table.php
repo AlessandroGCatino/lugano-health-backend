@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string("name")->required();
             $table->string("surname")->required();
-            $table->text("performaces")->nullable();
+            $table->text("performances")->nullable();
             $table->string("CV")->nullable();
             $table->string("address")->required();
             $table->string("ProfilePic")->nullable();
