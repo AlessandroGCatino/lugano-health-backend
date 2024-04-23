@@ -45,7 +45,8 @@ class DoctorController extends Controller
      */
     public function show(string $id)
     {
-        return view('pages.doctors.show', compact('doctors'));
+        $doctor = Doctor::findOrFail($id);
+        return view('dashboard.doctors.show', compact('doctor'));
     }
 
     /**
@@ -53,7 +54,8 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pages.doctors.edit', compact('doctors'));
+        $doctor = Doctor::findOrFail($id);
+        return view('pages.doctors.edit', compact('doctor'));
     }
 
     /**
