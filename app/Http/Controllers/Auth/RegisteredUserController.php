@@ -1,6 +1,9 @@
 <?php
 
+
 namespace App\Http\Controllers\Auth;
+
+session_start();
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
@@ -54,6 +57,10 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
             'phone_number' => $request->phone_number,
         ]);
+
+        $logDoc = Doctor::where("user_id" , $user->id)->first();
+
+        $_SESSION["loggedDoctor"] = $logDoc;
 
         event(new Registered($user));
 
