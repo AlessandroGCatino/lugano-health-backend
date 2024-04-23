@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
         ]);
 
         $user = User::create([
@@ -50,7 +51,8 @@ class RegisteredUserController extends Controller
             'name' => $request->firstname,
             'surname' => $request->lastname,
             'address' => $request->address,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'phone_number' => $request->phone_number,
         ]);
 
         event(new Registered($user));
