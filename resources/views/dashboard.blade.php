@@ -9,11 +9,11 @@ $loggedDoctor = $_SESSION["loggedDoctor"];
 <div class="container">
     
     <div class="bg-primary text-white my-5 p-4 rounded-3 row">
-        <h1 class="col-6">Welcome back dott.Cognome</h1>
+        <h1 class="col-6">Welcome back dott. {{$loggedDoctor->surname}}</h1>
 
         <!-- foto profilo -->
         <figure class="col-6">
-            <img src="" alt="">
+            <img class="img-fluid img-thumbnail rounded rounded-circle" src="{{ $loggedDoctor->ProfilePic ? $loggedDoctor->ProfilePic : '../../userpicture.jpg' }}" alt="ProfilePicture">
         </figure>
     </div>
 
