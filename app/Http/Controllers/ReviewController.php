@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
+session_start();
+;
+
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Doctor;
 use App\Models\Review;
+use Illuminate\Support\Number;
 
 class ReviewController extends Controller
 {
@@ -13,7 +19,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = Review::where("doctor_id", $_SESSION["loggedDoctor"]->id)->orderBy("date_sent", "desc")->get();
 
         return view('pages.reviews.index', compact('reviews'));
     }
