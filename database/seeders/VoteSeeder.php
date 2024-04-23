@@ -19,10 +19,9 @@ class VoteSeeder extends Seeder
             $newVote = new Vote();
             $newVote->stars = $i+1;
             $newVote->description = $starRatings[$i];
-            
+
             $newVote->save();
         }
-    }
         
+    }
 }
-
