@@ -1,31 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container">
+        <h1 class="mt-4 mb-3 fw-bold">Messages Received</h1>
 
-<h1 class="mt-2 fw-bold">The messages:</h1>
-
-{{-- <a href="{{route('pages.messages.create')}}" class="btn btn-primary d-block ms-auto">Add A New message</a>
-
-<table class="table table-striped mt-4">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">message</th>
-        <th scope="col">Slug</th>
-      </tr>
-    </thead>
-    <tbody>
-
-        @foreach ( $messages as $item )
-        <tr>
-            <th>{{$item->id}}</th>
-            <td><a href="{{route('pages.messages.show', $item->slug)}}">{{$item->name}}</a></td>
-            <td>{{$item->slug}}</td>
-          </tr>
-        @endforeach
-
-    </tbody>
-  </table> --}}
-</div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">From</th>
+                                        <th scope="col">Dates</th>
+                                        <th scope="col">Emails</th>
+                                        <th scope="col">Messages</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($messages->sortByDesc('date_sent') as $message)
+                                        <tr>
+                                            <td>{{ $message->user_name }}</td>
+                                            <td>{{ $message->date_sent }}</td>
+                                            <td>{{ $message->user_mail }}</td>
+                                            <td>{{ $message->message }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
-
