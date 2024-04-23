@@ -13,7 +13,7 @@ class SponsorizationController extends Controller
      */
     public function index()
     {
-        $sponsorization = Sponsorization::all();
+        $sponsorizations = Sponsorization::all();
 
         return view('pages.sponsorizations.index', compact('sponsorizations'));
     }

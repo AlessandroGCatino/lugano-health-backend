@@ -18,7 +18,8 @@ class Doctor extends Model
         "phone_number",
         "user_id",
         "performances",
-        "CV"
+        "CV",
+        'ProfilePic'
     ];
 
     

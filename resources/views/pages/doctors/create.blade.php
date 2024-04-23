@@ -20,7 +20,7 @@
     <form action="{{route("doctors.store")}}" method="POST" enctype="multipart/form-data">
 
         @csrf
-    
+
         <div class="mb-3">
             <label for="title" class="form-label">Nome</label>
             <input
@@ -30,16 +30,16 @@
                 id="title" placeholder="{{ $user->name }}"/>
         </div>
 
-        
-        
-    
+
+
+
         <button
             type="submit"
             class="btn btn-primary"
         >
             Crea
         </button>
-        
+
     </form>
 
 </div>
