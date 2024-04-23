@@ -13,7 +13,7 @@ $loggedDoctor = $_SESSION["loggedDoctor"];
 
         <!-- foto profilo -->
         <figure class="col-6">
-            <img src="" alt="">
+            <img class="img-fluid img-thumbnail rounded rounded-circle" src="{{ $loggedDoctor->ProfilePic ? $loggedDoctor->ProfilePic : '../../userpicture.jpg' }}" alt="ProfilePicture">
         </figure>
     </div>
 
