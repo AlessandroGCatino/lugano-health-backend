@@ -76,7 +76,7 @@ class DoctorController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'regex:/^[0-9]+$/','max:10','min:10'],
             'CV' => ['nullable', 'file','mimes:pdf,doc,docx'],
             'ProfilePic' => ['nullable', 'image'],
         ]);
