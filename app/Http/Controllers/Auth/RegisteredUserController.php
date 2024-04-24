@@ -70,11 +70,12 @@ class RegisteredUserController extends Controller
 
         $logDoc = Doctor::where("user_id" , $user->id)->first();
 
-        $_SESSION["loggedDoctor"] = $logDoc;
-
+        
         event(new Registered($user));
-
+        
         Auth::login($user);
+        
+        session(['doctor' => $logDoc]);
 
         return redirect(RouteServiceProvider::HOME);
     }
