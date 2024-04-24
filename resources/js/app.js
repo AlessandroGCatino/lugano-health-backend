@@ -5,7 +5,7 @@ import.meta.glob([
     '../img/**'
 ])
 
-function validateForm(event) {
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
 
     // We prevent the transmission of data to the server
     event.preventDefault();
@@ -73,4 +73,4 @@ function validateForm(event) {
 
     // The data are transmissed to the server
     this.submit();
-}
+})
