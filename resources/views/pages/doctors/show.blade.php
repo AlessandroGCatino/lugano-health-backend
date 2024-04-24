@@ -2,7 +2,13 @@
 
 @section('content')
     <div class="container">
-        <h2>questa è la show</h2>
+        <h2>questo è il tuo profilo (show)</h2>
+
+        {{-- <a class='btn btn-primary' href='{{route('doctors.edit', $doctor->id)}}">EDIT</a> --}}
+
+        <a href="{{route('doctors.edit', $doctor->id)}}" class="btn btn-primary">EDIT</a>
+
+
         {{-- <h1 class="mt-2 fw-bold">{{ $doctors->name }}</h1>
 
         <div class="d-flex gap-2 justify-content-end">
