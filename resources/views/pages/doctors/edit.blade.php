@@ -50,15 +50,25 @@
             </div>
 
             <div class="mb-3">
-                <label for="cv" class="form-label">CV (PDF, DOC, DOCX):</label>
-                <input type="file" class="form-control" id="cv" name="cv">
+                <label for="CV" class="form-label">CV (PDF, DOC, DOCX):</label>
+                <input type="file" class="form-control" id="CV" name="CV">
 
-                @error('cv')
+                @error('CV')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
             </div>
+
+            @if ($doctor->CV)
+
+            <img
+                src="{{ asset("/storage/" . $doctor->CV)}}"
+                class="img-fluid rounded-top"
+                alt="{{$doctor->name}}"
+            />
+                
+            @endif
 
             <div class="mb-3">
                 <label for="profile_pic" class="form-label">Profile Picture:</label>

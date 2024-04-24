@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DoctorController extends Controller
 {
@@ -71,6 +72,14 @@ class DoctorController extends Controller
         ]);
 
         $update_data = $request->all();
+
+        if($request->hasFile("cover")){
+            if($doctor->CV){
+                Storage::delete($doctor->CV);
+            }
+            $path = Storage::disk("public")->put("cv_images", $request->CV);
+            $update_data["CV"] = $path;
+        }
 
         $doctor->update($update_data);
 

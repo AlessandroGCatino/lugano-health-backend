@@ -33,12 +33,18 @@ class AuthenticatedSessionController extends Controller
 
         $doctor = Doctor::where("user_id" , $userr)->first();
 
+
+        // $request["user"] = $userr;
+        // $request["doctor"] = $doctor;
+        
         
         
         
         $request->session()->regenerate();
+        session(['doctor' => $doctor]);
+        session(['user' => $userr]);
         
-        $_SESSION["loggedDoctor"] = $doctor;
+        // $_SESSION["loggedDoctor"] = $doctor;
         
         return redirect()->intended(RouteServiceProvider::HOME);
     }
