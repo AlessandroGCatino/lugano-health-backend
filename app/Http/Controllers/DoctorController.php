@@ -34,18 +34,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        // $validated_data = $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'surname' => ['required', 'string', 'max:255'],
-        //     'address' => ['required', 'string', 'max:255'],
-        //     'phone_number' => ['required', 'string', 'max:255'],
-        //     'CV' => ['nullable', 'file','mimes:pdf,doc,docx'],
-        //     'ProfilePic' => ['nullable', 'image'],
-        //     'performances' => ['required', 'string'],
-        // ]);
-
-        // $new_doctor = Doctor::create($validated_data);
-        // return redirect()->route('pages.doctors.index');
+        
     }
 
     /**

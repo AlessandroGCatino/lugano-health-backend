@@ -11,19 +11,7 @@
                     <form method="POST" action="{{ route('register') }}" onsubmit="return validateForm(event);">
                         @csrf
 
-                        <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus maxlength="255" required>
-
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="mb-4 row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -77,6 +65,7 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="mb-4 row">
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
@@ -118,6 +107,26 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="mb-4 row">
+                            <label for="specialization" class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
+                        
+                            <div class="col-md-6">
+                                <select id="specialization" class="form-control @error('specialization') is-invalid @enderror" name="specialization" required autocomplete="specialization" autofocus>
+                                    <option value="">Select Specialization</option>
+                                    @foreach($specializations as $specialization)
+                                        <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
+                                    @endforeach
+                                </select>
+                        
+                                @error('specialization')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
