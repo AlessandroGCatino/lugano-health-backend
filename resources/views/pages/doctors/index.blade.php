@@ -2,9 +2,6 @@
 
 @section('content')
 
-@extends('layouts.app')
-
-@section('content')
 
 <h1 class="mt-2 fw-bold">The doctors:</h1>
 
@@ -34,4 +31,3 @@
 @endsection
 
 
-@endsection
