@@ -73,12 +73,20 @@ class DoctorController extends Controller
 
         $update_data = $request->all();
 
-        if($request->hasFile("cover")){
+        if($request->hasFile("CV")){
             if($doctor->CV){
                 Storage::delete($doctor->CV);
             }
             $path = Storage::disk("public")->put("cv_images", $request->CV);
             $update_data["CV"] = $path;
+        }
+
+        if($request->hasFile("profile_pic")){
+            if($doctor->ProfilePic){
+                Storage::delete($doctor->ProfilePic);
+            }
+            $path = Storage::disk("public")->put("profile_images", $request->profile_pic);
+            $update_data["ProfilePic"] = $path;
         }
 
         $doctor->update($update_data);
