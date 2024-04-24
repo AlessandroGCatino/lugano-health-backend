@@ -29,7 +29,7 @@
                     <div class="logo_laravel">
                         <img src="" alt="...">
                     </div>
-                    <a id="app-title" href="{{ url('/') }}">LUGANO HEALTH</a>
+                    <a id="app-title" href="{{ url('http://localhost:5174/') }}">LUGANO HEALTH</a>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
@@ -62,7 +62,7 @@
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->doctor->name }} {{ Auth::user()->doctor->surname }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
