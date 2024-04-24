@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('doctor_specialization', function (Blueprint $table) {
-            $table->unsignedBigInteger('doctor_id')->required();
+            $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('specialization_id')->required();
+            $table->unsignedBigInteger('specialization_id');
             $table->foreign('specialization_id')->references('id')->on('specializations')->cascadeOnDelete();
         });
     }
