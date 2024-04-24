@@ -62,11 +62,12 @@
 
             @if ($doctor->CV)
 
-            <img
+            {{-- <img
                 src="{{ asset("/storage/" . $doctor->CV)}}"
                 class="img-fluid rounded-top"
                 alt="{{$doctor->name}}"
-            />
+            /> --}}
+            <embed src="{{ asset("/storage/" . $doctor->CV)}}" width="800px" height="1200px" />
                 
             @endif
 
@@ -81,6 +82,12 @@
                 @enderror
             </div>
 
+            <img
+                src="{{ asset("/storage/" . $doctor->ProfilePic)}}"
+                class="img-fluid rounded-top"
+                alt="{{$doctor->name}}"
+            />
+            
             <button type="submit" class="btn btn-primary">Submit</button>
 
 
