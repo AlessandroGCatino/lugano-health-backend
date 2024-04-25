@@ -53,7 +53,7 @@
                 @enderror
             </div>
 
-            {{-- <div class="mb-3">
+            <div class="mb-3">
                 <label for="specializations" class="form-label">Select your specializations</label>
 
                 <select name="specializations[]" id="specializations" multiple
@@ -84,7 +84,7 @@
                     </span>
                 @enderror
 
-            </div> --}}
+            </div>
 
             <div class="mb-3">
                 <label for="CV" class="form-label">CV (PDF, DOC, DOCX):</label>

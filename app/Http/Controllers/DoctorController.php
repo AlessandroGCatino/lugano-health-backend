@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
-
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +34,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -52,7 +52,8 @@ class DoctorController extends Controller
     public function edit(Doctor $doctor)
     {
         // $doctors = Doctor::all();
-        return view('pages.doctors.edit', compact('doctor'));
+        $specializations = Specialization::all();
+        return view('pages.doctors.edit', compact('doctor','specializations'));
     }
 
     /**
@@ -90,6 +91,10 @@ class DoctorController extends Controller
         }
 
         $doctor->update($update_data);
+
+        if ($request->has('specializations')){
+            $doctor->specializations()->sync($request->specializations);
+        }
 
         return redirect()->route('dashboard', ['doctor' => $doctor->id]);
     }
