@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Registrazione profilo')
+
 @section('content')
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -158,6 +160,28 @@
                                 </div>
 
 
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="CV" class="form-label">CV (PDF, DOC, DOCX):</label>
+                                <input type="file" class="form-control" id="CV" name="CV">
+
+                                @error('CV')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="profile_pic" class="form-label">Profile Picture:</label>
+                                <input type="file" class="form-control" id="profile_pic" name="profile_pic">
+
+                                @error('profile_pic')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
 

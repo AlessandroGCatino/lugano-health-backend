@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('title','Modifica il tuo profilo')
+
 @section('content')
     <div class="container">
         <h1 class="mt-2 fw-bold">Edit your profile:</h1>
@@ -112,8 +115,10 @@
                 @enderror
             </div>
 
-            <img src="{{ asset('/storage/' . $doctor->ProfilePic) }}" class="img-fluid rounded-top"
-                alt="{{ $doctor->name }}" />
+            @if ($doctor->ProfilePic)
+                <img src="{{ asset('/storage/' . $doctor->ProfilePic) }}" class="img-fluid rounded-top"
+                    alt="{{ $doctor->name }}" />
+            @endif
 
             <button type="submit" class="btn btn-primary">Submit</button>
 
