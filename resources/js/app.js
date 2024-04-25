@@ -10,13 +10,6 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     // We prevent the transmission of data to the server
     event.preventDefault();
 
-    // Name
-    let name = document.getElementById('name').value;
-    if (name.trim() === '') {
-        alert('Il nome è obbligatorio.');
-        return false;
-    }
-
     // Email
     let email = document.getElementById('email').value;
     let emailRegex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/i;

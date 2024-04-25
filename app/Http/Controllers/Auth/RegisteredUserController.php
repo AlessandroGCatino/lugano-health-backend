@@ -39,18 +39,16 @@ class RegisteredUserController extends Controller
     {
 
         $request->validate([
-            // 'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'regex:/^[0-9]+$/','max:10','min:10'],
-            'specialization' => ['required'],
+            'specializations' => ['required', 'array'],
         ]);
 
         $user = User::create([
-            // 'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -61,12 +59,9 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'user_id' => $user->id,
             'phone_number' => $request->phone_number,
-            'specialization' => $request->specialization,
         ]);
-        
-        if($request->has('specialization')){
-            $doctor->specialization()->attach($request->specialization);
-        }
+
+        $doctor->specialization()->attach($request->specializations);
 
         $logDoc = Doctor::where("user_id" , $user->id)->first();
 

@@ -109,23 +109,23 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="specialization" class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
+                            <label for="specializations" class="col-md-4 col-form-label text-md-right">{{ __('Specializations') }}</label>
                         
                             <div class="col-md-6">
-                                <select id="specialization" class="form-control @error('specialization') is-invalid @enderror" name="specialization" required autocomplete="specialization" autofocus>
-                                    <option value="">Select Specialization</option>
+                                <select id="specializations" class="form-control @error('specializations') is-invalid @enderror" name="specializations[]" required autocomplete="specializations" autofocus multiple>
                                     @foreach($specializations as $specialization)
                                         <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
                                     @endforeach
                                 </select>
                         
-                                @error('specialization')
+                                @error('specializations')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
+                        
                         
 
                         <div class="mb-4 row mb-0">
