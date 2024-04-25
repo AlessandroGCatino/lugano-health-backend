@@ -45,6 +45,10 @@
                         <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
                             <a href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
+
+                        <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
+                            <a href="{{ route('testApi') }}">{{ __('ApiTest') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
