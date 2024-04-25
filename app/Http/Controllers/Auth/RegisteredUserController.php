@@ -46,7 +46,8 @@ class RegisteredUserController extends Controller
             'lastname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'regex:/^[0-9]+$/','max:10','min:10'],
-            'specialization' => ['required'],
+            'specializations' => ['required', 'array'],
+            'specializations.*' => ['exists:specializations,id'],
         ]);
 
         $user = User::create([
@@ -61,20 +62,20 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'user_id' => $user->id,
             'phone_number' => $request->phone_number,
-            'specialization' => $request->specialization,
+            // 'specialization' => $request->specialization,
         ]);
-        
-        if($request->has('specialization')){
-            $doctor->specialization()->attach($request->specialization);
+
+        if($request->has('specializations')){
+            $doctor->specializations()->attach($request->specializations);
         }
 
         $logDoc = Doctor::where("user_id" , $user->id)->first();
 
-        
+
         event(new Registered($user));
-        
+
         Auth::login($user);
-        
+
         session(['doctor' => $logDoc]);
 
         return redirect(RouteServiceProvider::HOME);
