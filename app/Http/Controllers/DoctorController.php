@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Specialization;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -51,8 +52,8 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        // $doctors = Doctor::all();
-        return view('pages.doctors.edit', compact('doctor'));
+        $specializations = Specialization::all();
+        return view('pages.doctors.edit', compact('doctor', 'specializations'));
     }
 
     /**
@@ -69,6 +70,7 @@ class DoctorController extends Controller
             'phone_number' => ['required', 'regex:/^[0-9]+$/','max:10','min:10'],
             'CV' => ['nullable', 'file','mimes:pdf,doc,docx'],
             'ProfilePic' => ['nullable', 'image'],
+            'specializations' => ['nullable', 'array'],
         ]);
 
         $update_data = $request->all();
@@ -87,6 +89,12 @@ class DoctorController extends Controller
             }
             $path = Storage::disk("public")->put("profile_images", $request->profile_pic);
             $update_data["ProfilePic"] = $path;
+        }
+
+        if($request->has('specializations')){
+            $doctor->specialization()->sync($request->specializations);
+        } else {
+            $doctor->specialization()->detach();
         }
 
         $doctor->update($update_data);
