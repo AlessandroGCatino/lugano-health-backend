@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                        <form method="POST" action="{{ route('register') }}" id="registrationForm">
+                        <form method="POST" action="{{ route('register') }}" id="registrationForm" enctype="multipart/form-data">
                             @csrf
 
                             <div class="card">
@@ -231,11 +231,6 @@
 
 
                             </div>
-
-
-
-
-
 
 
                             <div class="mb-4 row mb-0 mt-4">

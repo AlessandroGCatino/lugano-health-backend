@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <form action="{{ route('doctors.update', $doctor->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('doctors.update', $doctor->id) }}" method="POST" enctype="multipart/form-data" id="editDataForm">
                     @csrf
                     @method('PUT')
 
