@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Doctor;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,8 +29,23 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
+        $userr = User::where("email" , $request->email)->value("id");
 
+        $doctor = Doctor::where("user_id" , $userr)->first();
+
+
+        // $request["user"] = $userr;
+        // $request["doctor"] = $doctor;
+        
+        
+        
+        
+        $request->session()->regenerate();
+        session(['doctor' => $doctor]);
+        session(['user' => $userr]);
+        
+        // $_SESSION["loggedDoctor"] = $doctor;
+        
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

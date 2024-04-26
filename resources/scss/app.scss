@@ -1,1 +1,71 @@
-@import '~bootstrap/scss/bootstrap'
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
+@import '~bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+#app {
+    nav {
+        background-color: $d-green;
+
+        .container {
+
+            #app-title {
+                color: $s-yellow;
+                font-family: 'Bebas Neue';
+                font-size: 2.5em;
+                margin-top: 2px;
+                text-decoration: none;
+            }
+
+
+            .navbar-toggler {
+                border: none;
+                background-color: transparent;
+                outline: none;
+            }
+
+
+            .collapse {
+
+                ul {
+
+                    li {
+
+                        .nav-link {
+                            font-family: 'Red Hat Display';
+                            font-size: 0.7em;
+                            text-transform: uppercase;
+                            padding-block: 0.4em;
+                            padding-inline: 0.7em;
+                            border-radius: 6px;
+                            background-color: white;
+                        }
+                    }
+
+                }
+
+                #home-route {
+                    color: white;
+
+                    a {
+                        color: white;
+                        text-decoration: none;
+                        font-size: 0.87em;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+
+
+
+    }
+}
