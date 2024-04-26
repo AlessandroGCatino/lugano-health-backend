@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Lugano Health</title>
+    <title>Lugano Health | @yield('title')</title>
 
 
     <!-- Fonts -->
@@ -17,6 +17,8 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+    @vite(['resources/js/registerValidation.js'])
+    @vite(['resources/js/editValidation.js'])
 </head>
 
 <body>
@@ -29,7 +31,7 @@
                     <div class="logo_laravel">
                         <img src="" alt="...">
                     </div>
-                    <a id="app-title" href="{{ url('/') }}">LUGANO HEALTH</a>
+                    <a id="app-title" href="{{ url('http://localhost:5174/') }}">LUGANO HEALTH</a>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
@@ -44,6 +46,10 @@
                     <ul class="navbar-nav me-auto">
                         <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
                             <a href="{{url('/') }}">{{ __('Home') }}</a>
+                        </li>
+
+                        <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
+                            <a href="{{ route('testApi') }}">{{ __('ApiTest') }}</a>
                         </li>
                     </ul>
 
@@ -62,7 +68,7 @@
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->doctor->name }} {{ Auth::user()->doctor->surname }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

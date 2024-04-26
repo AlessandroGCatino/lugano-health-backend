@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Il tuo profilo')
+
 @section('content')
     <div class="container">
         <h2>questo è il tuo profilo (show)</h2>
