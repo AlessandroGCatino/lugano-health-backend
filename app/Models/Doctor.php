@@ -22,13 +22,13 @@ class Doctor extends Model
         'ProfilePic'
     ];
 
-    
+
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }
 
-    public function specialization(): BelongsToMany{
+    public function specializations(): BelongsToMany{
         return $this->belongsToMany(Specialization::class);
     }
 

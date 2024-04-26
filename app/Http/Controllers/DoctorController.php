@@ -35,7 +35,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -53,7 +53,7 @@ class DoctorController extends Controller
     public function edit(Doctor $doctor)
     {
         $specializations = Specialization::all();
-        return view('pages.doctors.edit', compact('doctor', 'specializations'));
+        return view('pages.doctors.edit', compact('doctor', 'specializations','specializations'));
     }
 
     /**
