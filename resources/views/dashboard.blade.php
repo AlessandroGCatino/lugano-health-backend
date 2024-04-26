@@ -14,7 +14,7 @@
 
         <!-- foto profilo -->
         <figure class="col-6">
-            <img class="img-fluid img-thumbnail rounded rounded-circle" src="{{ session('doctor')->ProfilePic ? session('doctor')->ProfilePic : '../../userpicture.jpg' }}" alt="ProfilePicture">
+            <img class="img-fluid img-thumbnail rounded rounded-circle" src="{{ asset('storage/' . session('doctor')->ProfilePic) }}" alt="ProfilePicture">
         </figure>
     </div>
 
