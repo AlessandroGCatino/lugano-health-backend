@@ -214,13 +214,13 @@
                                     </div>
 
                                     <div class="mb-4 row">
-                                        <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Profile Picture:</label>
+                                        <label for="ProfilePic" class="col-md-4 col-form-label text-md-right">Profile Picture:</label>
 
                                         <div class="col-md-8">
-                                            <input type="file" class="form-control" id="profile_pic" name="profile_pic">
+                                            <input type="file" class="form-control" id="ProfilePic" name="ProfilePic">
                                         </div>
 
-                                        @error('profile_pic')
+                                        @error('ProfilePic')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
