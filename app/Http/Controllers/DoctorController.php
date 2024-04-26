@@ -92,9 +92,9 @@ class DoctorController extends Controller
         }
 
         if($request->has('specializations')){
-            $doctor->specialization()->sync($request->specializations);
+            $doctor->specializations()->sync($request->specializations);
         } else {
-            $doctor->specialization()->detach();
+            $doctor->specializations()->detach();
         }
 
         $doctor->update($update_data);
