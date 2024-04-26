@@ -86,7 +86,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     }
 
     // Profile Picture
-    let profilePicFile = document.getElementById('profile_pic').files[0];
+    let profilePicFile = document.getElementById('ProfilePic').files[0];
     if (profilePicFile) {
         let fileExtension = profilePicFile.name.split('.').pop().toLowerCase();
         if (!['jpg', 'jpeg', 'png'].includes(fileExtension)) {
