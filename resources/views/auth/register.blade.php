@@ -178,8 +178,6 @@
                                             <select multiple name="specializations[]" id="specializations"
                                                 class="form-select @error('specializations') is-invalid @enderror">
 
-                                                <option value="">Select One Or More</option>
-
                                                 @forelse ($specializations as $item)
                                                     <option value="{{ $item->id }}"
                                                         {{ $item->id == old('specialization_id') ? 'selected' : '' }}>{{ $item->name }}
