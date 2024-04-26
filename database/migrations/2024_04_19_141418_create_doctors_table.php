@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("address")->required();
             $table->string("ProfilePic")->nullable();
             $table->string("phone_number")->nullable();
+            $table->string('slug', 255)->unique();
 
             $table->unsignedBigInteger("user_id")->nullable();
             $table->foreign("user_id")->references("id")->on("users")->onDelete("set null");
