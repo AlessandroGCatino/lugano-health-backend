@@ -144,15 +144,15 @@
                                     @enderror
 
                                     @if ($doctor->CV)
-                                        <div class="my-3">
+                                        <div class="my-1">
 
                                             <label for="old-cv" class="form-label mt-3">Il tuo vecchio curriculum:</label>
 
                                             <div class="row">
 
                                                 <div class="col-12">
-                                                    <embed src="{{ asset('/storage/' . $doctor->CV) }}" width="500"
-                                                        height="700" id="old-cv" />
+                                                    <embed src="{{ asset('/storage/' . $doctor->CV) }}" width="300"
+                                                        height="480" id="old-cv" />
 
                                                 </div>
                                             </div>
@@ -181,7 +181,7 @@
                                     @enderror
 
                                     @if ($doctor->ProfilePic)
-                                        <div class="mb-3">
+                                        <div class="my-3">
                                             <label for="old_profile_pic" class="form-label">La tua vecchia foto
                                                 profilo:</label>
                                             <div class="row">
