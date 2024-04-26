@@ -40,7 +40,6 @@ class RegisteredUserController extends Controller
     {
 
         $request->validate([
-            // 'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'firstname' => ['required', 'string', 'max:255'],
@@ -48,11 +47,9 @@ class RegisteredUserController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'regex:/^[0-9]+$/','max:10','min:10'],
             'specializations' => ['required', 'array'],
-            'specializations.*' => ['exists:specializations,id'],
         ]);
 
         $user = User::create([
-            // 'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -63,7 +60,7 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'user_id' => $user->id,
             'phone_number' => $request->phone_number,
-            // 'specialization' => $request->specialization,
+            'specialization' => $request->specialization,
         ]);
 
         if($request->hasFile("CV")){
