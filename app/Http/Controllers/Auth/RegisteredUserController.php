@@ -56,8 +56,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // $profilePicPath = $request->file('ProfilePic')->store('profile_images', 'public');
-        // $cvPath = $request->file('CV')->store('cv_files', 'public');
+        $profilePicPath = $request->file('ProfilePic')->store('profile_images', 'public');
+        $cvPath = $request->file('CV')->store('cv_images', 'public');
 
         $doctor = Doctor::create([
             'name' => $request->firstname,
@@ -66,8 +66,8 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
             'phone_number' => $request->phone_number,
             'specializations' => $request->specializations,
-            'ProfilePic' => $request->ProfilePic,
-            'CV' => $request->CV,
+            'ProfilePic' => $profilePicPath,
+            'CV' => $cvPath,
         ]);
 
         if($request->hasFile("CV")){
@@ -78,11 +78,11 @@ class RegisteredUserController extends Controller
             $update_data["CV"] = $path;
         }
 
-        if($request->hasFile("ProfilePic")){
+        if($request->hasFile("profile_pic")){
             if($doctor->ProfilePic){
                 Storage::delete($doctor->ProfilePic);
             }
-            $path = Storage::disk("public")->put("profile_images", $request->ProfilePic);
+            $path = Storage::disk("public")->put("profile_images", $request->profile_pic);
             $update_data["ProfilePic"] = $path;
         }
 
