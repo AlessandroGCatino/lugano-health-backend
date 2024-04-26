@@ -100,7 +100,6 @@
                                     <select name="specializations[]" id="specializations" multiple
                                         class='form-select @error('specializations') is-invalid @enderror'>
 
-                                        <option value="">Select one or more</option>
 
                                         @forelse ($specializations as $item)
                                             @if ($errors->any())
