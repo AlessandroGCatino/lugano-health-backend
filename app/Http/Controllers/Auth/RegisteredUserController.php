@@ -49,6 +49,7 @@ class RegisteredUserController extends Controller
             'specializations' => ['required', 'array'],
             'ProfilePic' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
             'CV' => ['nullable', 'file', 'mimes:pdf,doc,docx'],
+            'performances' => ['nullable', 'string'],
         ]);
 
         $user = User::create([
@@ -81,7 +82,9 @@ class RegisteredUserController extends Controller
             'specializations' => $request->specializations,
             'ProfilePic' => $profilePicPath,
             'CV' => $pathCV,
+            'performances' => $request->performances,
         ]);
+        
 
         if($request->has('specializations')){
             $doctor->specializations()->attach($request->specializations);
