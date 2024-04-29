@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -14,11 +15,15 @@ class DoctorController extends Controller
     public function index()
     {
         $doctors = Doctor::with('specializations')->get();
+        $specializations = Specialization::all();
 
         return response()->json([
             'success' => true,
-            'doctors' => $doctors
+            'doctors' => $doctors,
+            'specializations' => $specializations,
+
         ]);
+
     }
 
     /**
@@ -80,4 +85,26 @@ class DoctorController extends Controller
     {
         //
     }
+
+
+    public function getDoctorsBySpecializationSlug($slug){
+    $specialization = Specialization::where('slug', $slug)->first();
+
+    if (!$specialization) {
+        return response()->json([
+            'success' => false,
+            'error' => 'Specialization not found'
+        ], 404);
+    }
+
+    $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
+        $query->where('id', $specialization->id);
+    })->with('specializations')->get();
+
+    return response()->json([
+        'success' => true,
+        'doctors' => $doctors
+    ]);
+}
+
 }

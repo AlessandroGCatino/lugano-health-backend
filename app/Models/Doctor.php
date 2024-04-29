@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 class Doctor extends Model
 {
@@ -19,10 +20,31 @@ class Doctor extends Model
         "user_id",
         "performances",
         "CV",
-        'ProfilePic'
+        'ProfilePic',
+        'slug',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::creating(function ($doctor) {
+            $doctor->slug = static::generateSlug($doctor->name, $doctor->surname);
+        });
+    }
+
+    public static function generateSlug($name, $surname){
+        $baseSlug = Str::slug($name . ' ' . $surname, '-');
+
+        $count = static::where('slug', $baseSlug)->count();
+
+        if($count > 0){
+            $uniqueIdentifier = Str::random(5); 
+            return $baseSlug . '-' . $uniqueIdentifier;
+        }
+
+        return $baseSlug;
+    }
 
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
