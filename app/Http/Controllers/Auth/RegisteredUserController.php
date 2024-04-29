@@ -59,16 +59,22 @@ class RegisteredUserController extends Controller
         // $profilePicPath = $request->file('ProfilePic')->store('profile_images', 'public');
         // $cvPath = $request->file('CV')->store('cv_images', 'public');
 
+        $pathCV = "";
+
         if($request->hasFile("CV")){
 
             $pathCV = Storage::disk("public")->put("cv_images", $request->CV);
 
         }
 
+        $profilePicPath = "";
+
         if($request->hasFile("ProfilePic")){
 
             $profilePicPath = Storage::disk("public")->put("profile_images", $request->ProfilePic);
         }
+
+
 
         // dd($request->all(),$pathCV);
 
