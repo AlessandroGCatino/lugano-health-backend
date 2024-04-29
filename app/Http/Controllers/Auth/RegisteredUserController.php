@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-session_start();
+// session_start();
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
