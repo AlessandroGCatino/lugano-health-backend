@@ -44,9 +44,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
-                            <a href="{{url('/') }}">{{ __('Home') }}</a>
-                        </li>
 
                         <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
                             <a href="{{ route('testApi') }}">{{ __('ApiTest') }}</a>
