@@ -16,6 +16,12 @@
                 <div class="card-body">
                     <p class="card-text">Address: {{ $doctor->address }}</p>
                     <p class="card-text">Phone Number: {{ $doctor->phone_number }}</p>
+                    <p class="card-text">Specializations:
+                        @foreach($doctor->specializations as $specialization)
+                            {{ $specialization->name }},
+                        @endforeach
+                    </p>
+
                 </div>
             </div>
             <form action="{{ route('pages.doctors.destroy', $doctor->slug) }}" method="POST">
