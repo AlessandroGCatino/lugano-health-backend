@@ -1,30 +1,41 @@
 @extends('layouts.app')
 
+@section('title','Il tuo profilo')
+
 @section('content')
     <div class="container">
         <h2>questo è il tuo profilo (show)</h2>
 
-        {{-- <a class='btn btn-primary' href='{{route('doctors.edit', $doctor->id)}}">EDIT</a> --}}
-
         <a href="{{route('doctors.edit', $doctor->id)}}" class="btn btn-primary">EDIT</a>
 
+        {{-- <table class="table table-striped mt-4">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">doctor</th>
+                <th scope="col">Slug</th>
+              </tr>
+            </thead>
+            <tbody>
 
-        {{-- <h1 class="mt-2 fw-bold">{{ $doctors->name }}</h1>
+                @foreach ( $doctors as $item )
+                <tr>
+                    <th>{{$item->address}}</th>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->phone_number}}</td>
+                    <td>{{$item->user_id}}</td>
+                    <td>{{$item->performances}}</td>
+                    <td>{{$item->ProfilePic}}</td>
+                    <td>{{$item->CV}}</td>
 
-        <div class="d-flex gap-2 justify-content-end">
-            <a href="{{ route('pages.doctors.edit', $doctors->slug) }}" class="btn btn-warning">EDIT</a>
+                </tr>
+                @endforeach
 
-            <form action="{{ route('pages.doctors.destroy', $doctors->slug) }}" method="POST">
+            </tbody>
+          </table>
 
-                @csrf
-                @method('DELETE')
 
-                <button type="submit" class="btn btn-danger">
-                    DELETE
-                </button>
-            </form>
-        </div> --}}
-    </div>
+    </div> --}}
 
 
 @endsection
