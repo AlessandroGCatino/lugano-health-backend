@@ -41,27 +41,28 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Doctor $doctor)
+    public function show($slug)
     {
-        // $doctors = Doctor::find($id);
+        $doctor = Doctor::where('slug', $slug)->firstOrFail();
         return view('pages.doctors.show', compact('doctor'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Doctor $doctor)
+    public function edit($slug)
     {
+        $doctor = Doctor::where('slug', $slug)->firstOrFail();
         $specializations = Specialization::all();
-        return view('pages.doctors.edit', compact('doctor', 'specializations','specializations'));
+        return view('pages.doctors.edit', compact('doctor', 'specializations'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request, $slug)
     {
-        // $doctors = Doctor::findOrFail($id);
+        $doctor = Doctor::where('slug', $slug)->firstOrFail();
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -99,7 +100,7 @@ class DoctorController extends Controller
 
         $doctor->update($update_data);
 
-        return redirect()->route('dashboard', ['doctor' => $doctor->id]);
+        return redirect()->route('dashboard', ['doctor' => $doctor->slug]);
     }
 
     /**
