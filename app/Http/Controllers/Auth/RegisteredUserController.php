@@ -67,7 +67,7 @@ class RegisteredUserController extends Controller
 
         }
 
-        $profilePicPath = "";
+        $profilePicPath = null;
 
         if($request->hasFile("ProfilePic")){
 
