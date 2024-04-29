@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <form action="{{ route('doctors.update', $doctor->id) }}" method="POST" enctype="multipart/form-data" id="editDataForm">
+                <form action="{{ route('doctors.update', $doctor->slug) }}" method="POST" enctype="multipart/form-data" id="editDataForm">
                     @csrf
                     @method('PUT')
 
@@ -127,6 +127,23 @@
                                 </div>
 
 
+                            </div>
+
+
+                            <div class="mb-4 row">
+                                <label for="performances" class="col-md-4 col-form-label text-md-right">
+                                    <span>{{ __('Performance') }}</span>
+                                </label>
+                            
+                                <div class="col-md-8">
+                                    <textarea id="performances" class="form-control @error('performances') is-invalid @enderror" name="performances">{{old('performances') ?? $doctor->performances}}</textarea>
+                            
+                                    @error('performances')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="mb-4 row">
