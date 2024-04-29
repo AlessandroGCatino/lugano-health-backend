@@ -72,6 +72,7 @@ class DoctorController extends Controller
             'CV' => ['nullable', 'file','mimes:pdf,doc,docx'],
             'ProfilePic' => ['nullable', 'image'],
             'specializations' => ['nullable', 'array'],
+            'performances' => ['nullable', 'string'],
         ]);
 
         $update_data = $request->all();
@@ -106,8 +107,9 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
+        
 
     }
 }
