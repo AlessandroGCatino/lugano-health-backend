@@ -3,39 +3,22 @@
 @section('title','Il tuo profilo')
 
 @section('content')
+<div class="container">
+    <h2>This is the profile of Dr. {{ $doctor->name }} {{ $doctor->surname }}</h2>
+
     <div class="container">
-        <h2>questo è il tuo profilo (show)</h2>
-
-        <a href="{{route('doctors.edit', $doctor->id)}}" class="btn btn-primary">EDIT</a>
-
-        {{-- <table class="table table-striped mt-4">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">doctor</th>
-                <th scope="col">Slug</th>
-              </tr>
-            </thead>
-            <tbody>
-
-                @foreach ( $doctors as $item )
-                <tr>
-                    <th>{{$item->address}}</th>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->phone_number}}</td>
-                    <td>{{$item->user_id}}</td>
-                    <td>{{$item->performances}}</td>
-                    <td>{{$item->ProfilePic}}</td>
-                    <td>{{$item->CV}}</td>
-
-                </tr>
-                @endforeach
-
-            </tbody>
-          </table>
-
-
-    </div> --}}
+        <div class="card">
+            <div class="card-header">
+                Doctor Details
+            </div>
+            <div class="card-body">
+                <p class="card-text">Address: {{ $doctor->address }}</p>
+                <p class="card-text">Phone Number: {{ $doctor->phone_number }}</p>
+                <p class="card-text">Specializes in: </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
