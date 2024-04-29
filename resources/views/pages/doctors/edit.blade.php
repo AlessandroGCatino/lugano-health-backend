@@ -129,6 +129,23 @@
 
                             </div>
 
+
+                            <div class="mb-4 row">
+                                <label for="performances" class="col-md-4 col-form-label text-md-right">
+                                    <span>{{ __('Performance') }}</span>
+                                </label>
+                            
+                                <div class="col-md-8">
+                                    <textarea id="performances" class="form-control @error('performances') is-invalid @enderror" name="performances">{{old('performances') ?? $doctor->performances}}</textarea>
+                            
+                                    @error('performances')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="mb-4 row">
                                 <label for="CV" class="col-md-4 col-form-label text-md-right">CV (PDF, DOC,
                                     DOCX):</label>
