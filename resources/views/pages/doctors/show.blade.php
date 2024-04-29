@@ -14,7 +14,6 @@
             <div class="card-body">
                 <p class="card-text">Address: {{ $doctor->address }}</p>
                 <p class="card-text">Phone Number: {{ $doctor->phone_number }}</p>
-                <p class="card-text">Specializes in: </p>
             </div>
         </div>
     </div>
