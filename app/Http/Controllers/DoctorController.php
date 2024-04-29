@@ -99,6 +99,9 @@ class DoctorController extends Controller
 
         $doctor->update($update_data);
 
+        $logDoc = Doctor::where("id" , $doctor->id)->first();
+        session(['doctor' => $logDoc]);
+
         return redirect()->route('dashboard', ['doctor' => $doctor->id]);
     }
 
