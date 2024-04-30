@@ -1,11 +1,8 @@
 document.getElementById('editDataForm').addEventListener('submit', function (event) {
-
-    // We prevent the transmission of data to the server
     event.preventDefault();
 
-
     // Firstname
-    let firstname = document.getElementById('firstname').value;
+    let firstname = document.getElementById('name').value;
     if (firstname.trim() === '') {
         alert('Il nome è obbligatorio.');
         return false;
@@ -16,7 +13,7 @@ document.getElementById('editDataForm').addEventListener('submit', function (eve
     }
 
     // Lastname
-    let lastname = document.getElementById('lastname').value;
+    let lastname = document.getElementById('surname').value;
     if (lastname.trim() === '') {
         alert('Il cognome è obbligatorio.');
         return false;
@@ -72,10 +69,6 @@ document.getElementById('editDataForm').addEventListener('submit', function (eve
         }
     }
 
-
-    // The data are transmissed to the server
+    // The data are transmitted to the server
     this.submit();
-})
-
-
-
+});

@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-session_start();
+// session_start();
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
@@ -48,7 +48,8 @@ class RegisteredUserController extends Controller
             'phone_number' => ['required', 'regex:/^[0-9]+$/','max:10','min:10'],
             'specializations' => ['required', 'array'],
             'ProfilePic' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
-            'CV' => ['nullable', 'file', 'mimes:pdf'],
+            'CV' => ['nullable', 'file', 'mimes:pdf,doc,docx'],
+            'performances' => ['nullable', 'string'],
         ]);
 
         $user = User::create([
@@ -57,7 +58,26 @@ class RegisteredUserController extends Controller
         ]);
 
         // $profilePicPath = $request->file('ProfilePic')->store('profile_images', 'public');
-        // $cvPath = $request->file('CV')->store('cv_files', 'public');
+        // $cvPath = $request->file('CV')->store('cv_images', 'public');
+
+        $pathCV = "";
+
+        if($request->hasFile("CV")){
+
+            $pathCV = Storage::disk("public")->put("cv_images", $request->CV);
+
+        }
+
+        $profilePicPath = null;
+
+        if($request->hasFile("ProfilePic")){
+
+            $profilePicPath = Storage::disk("public")->put("profile_images", $request->ProfilePic);
+        }
+
+
+
+        // dd($request->all(),$pathCV);
 
         $doctor = Doctor::create([
             'name' => $request->firstname,
@@ -66,32 +86,17 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
             'phone_number' => $request->phone_number,
             'specializations' => $request->specializations,
-            'ProfilePic' => $request->ProfilePic,
-            'CV' => $request->CV,
+            'ProfilePic' => $profilePicPath,
+            'CV' => $pathCV,
+            'performances' => $request->performances,
         ]);
-
-        if($request->hasFile("CV")){
-            if($doctor->CV){
-                Storage::delete($doctor->CV);
-            }
-            $path = Storage::disk("public")->put("cv_images", $request->CV);
-            $update_data["CV"] = $path;
-        }
-
-        if($request->hasFile("ProfilePic")){
-            if($doctor->ProfilePic){
-                Storage::delete($doctor->ProfilePic);
-            }
-            $path = Storage::disk("public")->put("profile_images", $request->ProfilePic);
-            $update_data["ProfilePic"] = $path;
-        }
+        
 
         if($request->has('specializations')){
             $doctor->specializations()->attach($request->specializations);
         }
 
         $logDoc = Doctor::where("user_id" , $user->id)->first();
-
 
         event(new Registered($user));
 

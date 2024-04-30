@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <form action="{{ route('doctors.update', $doctor->id) }}" method="POST" enctype="multipart/form-data" id="editDataForm">
+                <form action="{{ route('doctors.update', $doctor->slug) }}" method="POST" enctype="multipart/form-data" id="editDataForm">
                     @csrf
                     @method('PUT')
 
@@ -15,7 +15,7 @@
                     <div class="card mt-4">
                         <div class="card-header">
 
-                            <h2 class="fw-bold">Edit your profile:</h2>
+                            <h2 class="fw-bold">Modifica il tuo profilo:</h2>
 
                         </div>
 
@@ -23,7 +23,12 @@
 
 
                             <div class="mb-4 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name:</label>
+                                <label for="name"
+                                class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Nome') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
                                     <input maxlength="255" required type="text"
@@ -40,7 +45,12 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname:</label>
+                                <label for="lastname"
+                                class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Cognome') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
                                     <input type="text" maxlength="255" required class="form-control" id="surname"
@@ -57,7 +67,12 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">Address:</label>
+                                <label for="address"
+                                class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Indirizzo') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
 
@@ -74,8 +89,11 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone
-                                    Number:</label>
+                                <label for="phone_number"
+                                class="col-md-4 col-form-label text-md-right">
+                                    <span>{{ __('Numero di telefono') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
 
@@ -92,15 +110,17 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="specializations" class="col-md-4 col-form-label text-md-right">Select your
-                                    specializations</label>
+                                <label for='specializations' class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Specializzazioni') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
 
                                     <select name="specializations[]" id="specializations" multiple
                                         class='form-select @error('specializations') is-invalid @enderror'>
 
-                                        <option value="">Select one or more</option>
 
                                         @forelse ($specializations as $item)
                                             @if ($errors->any())
@@ -115,7 +135,7 @@
 
                                         @empty
 
-                                            <option value="">There are no specializations</option>
+                                            <option value="">Non ci sono specializzazioni</option>
                                         @endforelse
                                     </select>
 
@@ -128,6 +148,23 @@
                                 </div>
 
 
+                            </div>
+
+
+                            <div class="mb-4 row">
+                                <label for="performances" class="col-md-4 col-form-label text-md-right">
+                                    <span>{{ __('Performance') }}</span>
+                                </label>
+                            
+                                <div class="col-md-8">
+                                    <textarea id="performances" class="form-control @error('performances') is-invalid @enderror" name="performances">{{old('performances') ?? $doctor->performances}}</textarea>
+                            
+                                    @error('performances')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="mb-4 row">
@@ -145,15 +182,15 @@
                                     @enderror
 
                                     @if ($doctor->CV)
-                                        <div class="my-3">
+                                        <div class="my-1">
 
                                             <label for="old-cv" class="form-label mt-3">Il tuo vecchio curriculum:</label>
 
                                             <div class="row">
 
                                                 <div class="col-12">
-                                                    <embed src="{{ asset('/storage/' . $doctor->CV) }}" width="500"
-                                                        height="700" id="old-cv" />
+                                                    <embed src="{{ asset('/storage/' . $doctor->CV) }}" width="300"
+                                                        height="480" id="old-cv" />
 
                                                 </div>
                                             </div>
@@ -168,8 +205,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Profile
-                                    Picture:</label>
+                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Foto profilo:</label>
 
                                 <div class="col-md-8">
 
@@ -182,7 +218,7 @@
                                     @enderror
 
                                     @if ($doctor->ProfilePic)
-                                        <div class="mb-3">
+                                        <div class="my-3">
                                             <label for="old_profile_pic" class="form-label">La tua vecchia foto
                                                 profilo:</label>
                                             <div class="row">
@@ -206,7 +242,7 @@
                     <div class="mb-4 row mb-0 mt-4">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Edit') }}
+                                {{ __('Modifica') }}
                             </button>
                         </div>
                     </div>

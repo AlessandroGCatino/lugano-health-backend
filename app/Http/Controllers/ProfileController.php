@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Doctor;
+
 
 class ProfileController extends Controller
 {
@@ -42,19 +45,33 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+          $request->validateWithBag('userDeletion', [
+        'password' => ['required', 'current_password'],
+    ]);
 
-        $user = $request->user();
+    $user = $request->user();
 
-        Auth::logout();
+    $doctor = $user->doctor;
 
-        $user->delete();
+    if ($doctor) {
+        if ($doctor->CV) {
+            Storage::delete($doctor->CV);
+        }
+        if ($doctor->ProfilePic) {
+            Storage::delete($doctor->ProfilePic);
+        }
+        $doctor->specializations()->detach();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        $doctor->delete();
+    }
 
-        return Redirect::to('/');
+    Auth::logout();
+
+    $user->delete();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return Redirect::to('/dashboard');
     }
 }

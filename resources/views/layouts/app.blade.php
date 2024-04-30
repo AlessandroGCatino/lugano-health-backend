@@ -28,8 +28,8 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center">
-                    <div class="logo_laravel">
-                        <img src="" alt="...">
+                    <div class="logo_laravel w-25 ">
+                        <img src="/lugano-health-logo-1.png" alt="..." class="img-fluid ">
                     </div>
                     <a id="app-title" href="{{ url('http://localhost:5174/') }}">LUGANO HEALTH</a>
                     {{-- config('app.name', 'Laravel') --}}
@@ -44,9 +44,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
-                            <a href="{{url('/') }}">{{ __('Home') }}</a>
-                        </li>
 
                         <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
                             <a href="{{ route('testApi') }}">{{ __('ApiTest') }}</a>
