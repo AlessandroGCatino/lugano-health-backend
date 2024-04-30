@@ -9,7 +9,7 @@
     {{-- {{dd(session('doctor')->name)}} --}}
 
     <div class="bg-primary text-white my-5 p-4 rounded-3 row">
-        <h1 class="col-6">Welcome back dott. {{session('doctor')->name}}</h1>
+        <h1 class="col-6">Dott. {{session('doctor')->name}} {{session('doctor')->surname}}</h1>
 
         <!-- foto profilo -->
         <figure class="col-6 d-flex ">

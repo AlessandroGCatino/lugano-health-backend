@@ -15,7 +15,7 @@
                     <div class="card mt-4">
                         <div class="card-header">
 
-                            <h2 class="fw-bold">Edit your profile:</h2>
+                            <h2 class="fw-bold">Modifica il tuo profilo:</h2>
 
                         </div>
 
@@ -135,7 +135,7 @@
 
                                         @empty
 
-                                            <option value="">There are no specializations</option>
+                                            <option value="">Non ci sono specializzazioni</option>
                                         @endforelse
                                     </select>
 
@@ -205,8 +205,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Profile
-                                    Picture:</label>
+                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Foto profilo:</label>
 
                                 <div class="col-md-8">
 

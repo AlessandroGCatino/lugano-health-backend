@@ -24,3 +24,4 @@ Route::get('/test', [DoctorController::class, 'index'])->name('testApi');
 Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
 
 Route::get('/doctors/specialization/{slug}', [DoctorController::class, 'getDoctorsBySpecializationSlug']);
+Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
