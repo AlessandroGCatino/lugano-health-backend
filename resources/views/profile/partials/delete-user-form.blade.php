@@ -1,17 +1,17 @@
 <section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Delete Account') }}
+            {{ __("Vuoi eliminare l'account in maniera definitiva?") }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+            {{ __('Cancellerà definitivamente il tuo account, insieme a tutte le sue risorse e dati. Per favore, inserisci la tua password per confermare che desideri eliminare definitivamente il tuo account.') }}
         </p>
     </header>
 
     <!-- Modal trigger button -->
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-account">
-        {{__('Delete Account')}}
+        {{__('Elimina Account')}}
     </button>
 
     <!-- Modal Body -->
@@ -25,10 +25,10 @@
                 </div>
                 <div class="modal-body">
                     <h2 class="text-lg font-medium text-gray-900">
-                        {{ __('Are you sure you want to delete your account?') }}
+                        {{ __("Vuoi eliminare l'account in maniera definitiva?") }}
                     </h2>
                     <p class="mt-1 text-sm text-gray-600">
-                        {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                        {{ __('Cancellerà definitivamente il tuo account, insieme a tutte le sue risorse e dati. Per favore, inserisci la tua password per confermare che desideri eliminare definitivamente il tuo account.') }}
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -52,7 +52,7 @@
 
 
                             <button type="submit" class="btn btn-danger">
-                                {{ __('Delete Account') }}
+                                {{ __('Elimina Account') }}
                             </button>
                             <!--  -->
                         </div>
