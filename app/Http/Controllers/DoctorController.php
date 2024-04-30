@@ -17,7 +17,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::with('specializations')->where('slug','cardiologia')->get();
+
+        dd($doctors);
 
         return view('pages.doctors.index', compact('doctors'));
     }
@@ -101,6 +103,9 @@ class DoctorController extends Controller
 
         $doctor->update($update_data);
 
+        $logDoc = Doctor::where("id" , $doctor->id)->first();
+        session(['doctor' => $logDoc]);
+
         return redirect()->route('dashboard', ['doctor' => $doctor->slug]);
     }
 
@@ -109,7 +114,7 @@ class DoctorController extends Controller
      */
     public function destroy(string $slug)
     {
-        
+
 
     }
 }
