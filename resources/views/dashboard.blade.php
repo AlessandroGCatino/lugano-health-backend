@@ -12,8 +12,15 @@
         <h1 class="col-6">Welcome back dott. {{session('doctor')->name}}</h1>
 
         <!-- foto profilo -->
-        <figure class="col-6">
-            <img class="img-fluid img-thumbnail rounded rounded-circle" src="{{ asset('storage/' . session('doctor')->ProfilePic) }}" alt="ProfilePicture">
+        <figure class="col-6 d-flex ">
+            @if (session('doctor')->ProfilePic === null )
+            <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="/userpicture.jpg" alt="ProfilePicture">
+            
+            @else
+            
+            <img class="img-fluid img-thumbnail rounded rounded-circle w-50 ms-auto ratio ratio-1x1 " src="{{ asset('/storage/' . session('doctor')->ProfilePic) }}" alt="ProfilePicture">
+            
+            @endif
         </figure>
     </div>
 

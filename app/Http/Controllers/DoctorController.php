@@ -17,7 +17,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::with('specializations')->where('slug','cardiologia')->get();
+
+        dd($doctors);
 
         return view('pages.doctors.index', compact('doctors'));
     }
@@ -72,6 +74,7 @@ class DoctorController extends Controller
             'CV' => ['nullable', 'file','mimes:pdf,doc,docx'],
             'ProfilePic' => ['nullable', 'image'],
             'specializations' => ['nullable', 'array'],
+            'performances' => ['nullable', 'string'],
         ]);
 
         $update_data = $request->all();
@@ -100,14 +103,18 @@ class DoctorController extends Controller
 
         $doctor->update($update_data);
 
+        $logDoc = Doctor::where("id" , $doctor->id)->first();
+        session(['doctor' => $logDoc]);
+
         return redirect()->route('dashboard', ['doctor' => $doctor->slug]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
+
 
     }
 }
