@@ -45,9 +45,10 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    
+    public function show($slug)
     {
-        $doctor = Doctor::with('specializations');
+        $doctor = Doctor::where('slug',$slug)->with('specializations')->get();
 
         if ($doctor) {
             return response()->json([
@@ -90,16 +91,22 @@ class DoctorController extends Controller
     public function getDoctorsBySpecializationSlug($slug){
     $specialization = Specialization::where('slug', $slug)->first();
 
-    if (!$specialization) {
-        return response()->json([
-            'success' => false,
-            'error' => 'Specialization not found'
-        ], 404);
-    }
+    // if (!$specialization) {
+    //     return response()->json([
+    //         'success' => false,
+    //         'error' => 'Specialization not found'
+    //     ], 404);
+    // }
 
     $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
         $query->where('id', $specialization->id);
     })->with('specializations')->get();
+
+
+    // $doctors = Doctor::with('specializations')->whereHas('slug',$slug)->first();
+    // $doctors = Doctor::all();
+
+        // dd($doctors);
 
     return response()->json([
         'success' => true,
