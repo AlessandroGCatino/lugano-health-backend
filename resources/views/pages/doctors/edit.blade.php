@@ -15,7 +15,7 @@
                     <div class="card mt-4">
                         <div class="card-header">
 
-                            <h2 class="fw-bold">Edit your profile:</h2>
+                            <h2 class="fw-bold">Modifica il tuo profilo:</h2>
 
                         </div>
 
@@ -23,7 +23,7 @@
 
 
                             <div class="mb-4 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name:</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Nome:</label>
 
                                 <div class="col-md-8">
                                     <input maxlength="255" required type="text"
@@ -40,7 +40,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname:</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome:</label>
 
                                 <div class="col-md-8">
                                     <input type="text" maxlength="255" required class="form-control" id="surname"
@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">Address:</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">Indirizzo:</label>
 
                                 <div class="col-md-8">
 
@@ -74,8 +74,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone
-                                    Number:</label>
+                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Numero di Telefono:</label>
 
                                 <div class="col-md-8">
 
@@ -92,8 +91,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="specializations" class="col-md-4 col-form-label text-md-right">Select your
-                                    specializations</label>
+                                <label for="specializations" class="col-md-4 col-form-label text-md-right">Seleziona le tue specializzazioni</label>
 
                                 <div class="col-md-8">
 
@@ -114,7 +112,7 @@
 
                                         @empty
 
-                                            <option value="">There are no specializations</option>
+                                            <option value="">Non ci sono specializzazioni</option>
                                         @endforelse
                                     </select>
 
@@ -184,8 +182,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Profile
-                                    Picture:</label>
+                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Foto profilo:</label>
 
                                 <div class="col-md-8">
 
