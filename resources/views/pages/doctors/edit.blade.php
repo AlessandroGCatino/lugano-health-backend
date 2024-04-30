@@ -23,7 +23,12 @@
 
 
                             <div class="mb-4 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name:</label>
+                                <label for="name"
+                                class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Nome') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
                                     <input maxlength="255" required type="text"
@@ -40,7 +45,12 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname:</label>
+                                <label for="lastname"
+                                class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Cognome') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
                                     <input type="text" maxlength="255" required class="form-control" id="surname"
@@ -57,7 +67,12 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">Address:</label>
+                                <label for="address"
+                                class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Indirizzo') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
 
@@ -74,8 +89,11 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone
-                                    Number:</label>
+                                <label for="phone_number"
+                                class="col-md-4 col-form-label text-md-right">
+                                    <span>{{ __('Numero di telefono') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
 
@@ -92,8 +110,11 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="specializations" class="col-md-4 col-form-label text-md-right">Select your
-                                    specializations</label>
+                                <label for='specializations' class="col-md-4 col-form-label text-md-right">
+
+                                    <span>{{ __('Specializzazioni') }}</span>
+                                    <span class="text-danger">*</span>
+                                </label>
 
                                 <div class="col-md-8">
 
