@@ -106,10 +106,7 @@ class DoctorController extends Controller
         $logDoc = Doctor::where("id" , $doctor->id)->first();
         session(['doctor' => $logDoc]);
 
-        return redirect()->route('dashboard', ['doctor' => $doctor->id]);
-=========
         return redirect()->route('dashboard', ['doctor' => $doctor->slug]);
->>>>>>>>> Temporary merge branch 2
     }
 
     /**
