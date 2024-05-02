@@ -27,7 +27,7 @@
     <h3>Pannello di Controllo</h3>
 
     <div class="d-flex justify-content-between">
-        <a class="bg-primary text-white my-3 py-5 px-4 rounded-3 row" href="{{route("doctors.show", session('doctor')->slug)}}">Informazioni Medico</a>
+        <a class="bg-primary text-white my-3 py-5 px-4 rounded-3 row" href="{{route("doctors.edit", session('doctor')->slug)}}">Informazioni Medico</a>
         <a class="bg-primary text-white my-3 py-5 px-4 rounded-3 row" href="{{route("messages.index", session('doctor'))}}">Messaggi Ricevuti</a>
         <a class="bg-primary text-white my-3 py-5 px-4 rounded-3 row" href="{{route("reviews.index", session('doctor')->id)}}">Recensioni Ricevute</a>
         <a class="bg-primary text-white my-3 py-5 px-4 rounded-3 row" href="{{route("sponsorizations.index")}}">Sponsorizzazioni</a>
