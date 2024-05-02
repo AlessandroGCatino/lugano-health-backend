@@ -15,7 +15,7 @@
                     <div class="card mt-4">
                         <div class="card-header">
 
-                            <h2 class="fw-bold">Modifica il tuo profilo:</h2>
+                            <h2 class="fw-bold">Edit your profile:</h2>
 
                         </div>
 
@@ -23,7 +23,7 @@
 
 
                             <div class="mb-4 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Nome:</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Name:</label>
 
                                 <div class="col-md-8">
                                     <input maxlength="255" required type="text"
@@ -35,12 +35,20 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="firstnameErrorRequired" class="mt-1 alert alert-danger p-2 mb-1 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il nome è obbligatorio</li>
+                                    </ul>
+
+                                    <ul id="firstnameErrorNumbers" class="alert alert-danger p-2 m-0 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Non può contenere numeri</li>
+                                    </ul>
                                 </div>
 
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome:</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname:</label>
 
                                 <div class="col-md-8">
                                     <input type="text" maxlength="255" required class="form-control" id="surname"
@@ -52,12 +60,20 @@
                                         </span>
                                     @enderror
 
+                                    <ul id="lastnameErrorRequired" class="mt-1 alert alert-danger p-2 mb-1 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il cognome è obbligatorio</li>
+                                    </ul>
+
+                                    <ul id="lastnameErrorNumbers" class="alert alert-danger p-2 m-0 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Non può contenere numeri</li>
+                                    </ul>
+
                                 </div>
 
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">Indirizzo:</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">Address:</label>
 
                                 <div class="col-md-8">
 
@@ -68,13 +84,20 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="addressError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>L'indirizzo è obbligatorio</li>
+                                        <li class='text-danger fw-bold ms-4'>Deve essere presente almeno un numero</li>
+                                    </ul>
+
                                 </div>
 
 
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Numero di Telefono:</label>
+                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone
+                                    Number:</label>
 
                                 <div class="col-md-8">
 
@@ -86,12 +109,18 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="phoneNumberError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il numero di telefono è obbligatorio</li>
+                                        <li class='text-danger fw-bold ms-4'>Devono essere presenti solo numeri</li>
+                                    </ul>
                                 </div>
 
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="specializations" class="col-md-4 col-form-label text-md-right">Seleziona le tue specializzazioni</label>
+                                <label for="specializations" class="col-md-4 col-form-label text-md-right">Select your
+                                    specializations</label>
 
                                 <div class="col-md-8">
 
@@ -112,7 +141,7 @@
 
                                         @empty
 
-                                            <option value="">Non ci sono specializzazioni</option>
+                                            <option value="">There are no specializations</option>
                                         @endforelse
                                     </select>
 
@@ -121,6 +150,10 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="specializationsError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Seleziona almeno una specializzazione</li>
+                                    </ul>
 
                                 </div>
 
@@ -132,10 +165,10 @@
                                 <label for="performances" class="col-md-4 col-form-label text-md-right">
                                     <span>{{ __('Performance') }}</span>
                                 </label>
-                            
+
                                 <div class="col-md-8">
                                     <textarea id="performances" class="form-control @error('performances') is-invalid @enderror" name="performances">{{old('performances') ?? $doctor->performances}}</textarea>
-                            
+
                                     @error('performances')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -157,6 +190,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="cvFileError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il file CV deve essere in formato PDF, DOC, o DOCX
+                                        </li>
+                                    </ul>
 
                                     @if ($doctor->CV)
                                         <div class="my-1">
@@ -182,7 +220,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Foto profilo:</label>
+                                <label for="profile_pic" class="col-md-4 col-form-label text-md-right">Profile
+                                    Picture:</label>
 
                                 <div class="col-md-8">
 
@@ -193,6 +232,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="profilePicFileError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>La foto profilo deve essere in formato JPEG, JPG o PNG
+                                        </li>
+                                    </ul>
 
                                     @if ($doctor->ProfilePic)
                                         <div class="my-3">
@@ -219,13 +263,39 @@
                     <div class="mb-4 row mb-0 mt-4">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Modifica') }}
+                                {{ __('Edit') }}
                             </button>
                         </div>
                     </div>
 
                 </form>
+
+                <div class="card mt-5 mb-3">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Massimizza la Tua Visibilità</h2>
+                    </div>
+                    <div class="card-body ">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            @foreach ($sponsorizations as $element)
+                                <div class="col ">
+                                    <div class="card p-3 shadow my-4">
+                                        <h3>{{ $element->name }}</h3>
+                                        <p> {{ $element->description }} </p>
+                                        <p><span class="fw-bold">Prezzo</span>: {{ $element->price }}€</p> 
+                                        <p><span class="fw-bold">Durata</span>: {{ $element->durata }}h</p>
+                                        <button class="btn rounded-pill btn-primary">
+                                            Scegli
+                                        </button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
+
+            
         </div>
 
 

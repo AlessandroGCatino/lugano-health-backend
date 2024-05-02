@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 use App\Models\Specialization;
+use App\Models\Sponsorization;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::with('specializations')->where('slug','cardiologia')->get();
+
+        dd($doctors);
 
         return view('pages.doctors.index', compact('doctors'));
     }
@@ -54,9 +57,14 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::where('slug', $slug)->firstOrFail();
         $specializations = Specialization::all();
-        return view('pages.doctors.edit', compact('doctor', 'specializations'));
+        $sponsorizations = Sponsorization::all();
+
+
+
+        return view('pages.doctors.edit', compact('doctor', 'specializations', 'sponsorizations'));
     }
 
+    
     /**
      * Update the specified resource in storage.
      */
@@ -112,7 +120,7 @@ class DoctorController extends Controller
      */
     public function destroy(string $slug)
     {
-        
+
 
     }
 }

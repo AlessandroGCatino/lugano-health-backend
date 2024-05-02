@@ -13,7 +13,8 @@ class Sponsorization extends Model
     protected $fillable = [
         'price',
         'name',
-        'durata'
+        'durata',
+        'description',
     ];
     //una Sponsorization è collegato a + dottors
     public function sponsorization(): BelongsToMany

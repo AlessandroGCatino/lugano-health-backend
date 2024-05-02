@@ -4,3 +4,11 @@
   text-align: center;
   font-weight: bold;
 }
+
+@mixin d-green-bg {
+  background-color: $d-green;
+}
+
+@mixin d-white-bg {
+  background-color: $d-white;
+}
