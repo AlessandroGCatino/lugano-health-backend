@@ -28,9 +28,12 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center">
-                    <div class="logo_laravel w-25 ">
-                        <img src="/lugano-health-logo-1.png" alt="..." class="img-fluid ">
-                    </div>
+                    <a href="{{ route('dashboard') }}">
+
+                        <div class="logo_laravel w-25">
+                            <img src="/lugano-health-logo-1.png" href="{{ route('dashboard') }}" alt="..." class="img-fluid ">
+                        </div>
+                    </a>
                     <a id="app-title" href="{{ url('http://localhost:5174/') }}">LUGANO HEALTH</a>
                     {{-- config('app.name', 'Laravel') --}}
 
@@ -50,7 +53,7 @@
                             <a href="{{ route('testApi') }}">{{ __('ApiTest') }}</a>
                         </li>
                         <li>
-                            <a class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0" href="{{ route('token', session('doctor')->slug) }}">Test Pagamento</a>
+                            <a class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0" href="{{ route('token') }}">Test Pagamento</a>
                         </li>
                     </ul>
 
