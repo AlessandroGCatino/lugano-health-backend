@@ -1,10 +1,5 @@
 @use "./variables" as *;
 
-@mixin si-usa-cosi {
-  text-align: center;
-  font-weight: bold;
-}
-
 @mixin d-green-bg {
   background-color: $d-green;
 }
