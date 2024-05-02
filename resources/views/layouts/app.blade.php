@@ -33,6 +33,7 @@
                     </div>
                     <a id="app-title" href="{{ url('http://localhost:5174/') }}">LUGANO HEALTH</a>
                     {{-- config('app.name', 'Laravel') --}}
+                    
                 </a>
 
                 <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -47,6 +48,9 @@
 
                         <li id='home-route' class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0">
                             <a href="{{ route('testApi') }}">{{ __('ApiTest') }}</a>
+                        </li>
+                        <li>
+                            <a class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0" href="{{ route('token', session('doctor')->slug) }}">Test Pagamento</a>
                         </li>
                     </ul>
 
