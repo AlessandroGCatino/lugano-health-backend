@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BraintreeController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
@@ -58,5 +59,8 @@ Route::middleware("auth")->group( function(){
 Route::middleware("auth")->group( function(){
     Route::resource("votes", VoteController::class);
 });
+
+Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
+
 
 require __DIR__.'/auth.php';
