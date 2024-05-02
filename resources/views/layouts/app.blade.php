@@ -36,7 +36,7 @@
                     </a>
                     <a id="app-title" href="{{ url('http://localhost:5174/') }}">LUGANO HEALTH</a>
                     {{-- config('app.name', 'Laravel') --}}
-                    
+
                 </a>
 
                 <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

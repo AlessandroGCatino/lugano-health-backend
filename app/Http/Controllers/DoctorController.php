@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 use App\Models\Specialization;
+use App\Models\Sponsorization;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -56,9 +57,14 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::where('slug', $slug)->firstOrFail();
         $specializations = Specialization::all();
-        return view('pages.doctors.edit', compact('doctor', 'specializations'));
+        $sponsorizations = Sponsorization::all();
+
+
+
+        return view('pages.doctors.edit', compact('doctor', 'specializations', 'sponsorizations'));
     }
 
+    
     /**
      * Update the specified resource in storage.
      */
