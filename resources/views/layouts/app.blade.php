@@ -53,7 +53,7 @@
                             <a href="{{ route('testApi') }}">{{ __('ApiTest') }}</a>
                         </li>
                         <li>
-                            <a class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0" href="{{ route('token', session('doctor')->slug) }}">Test Pagamento</a>
+                            <a class="nav-item mt-3 mt-md-0 text-center ms-md-3 text-white ms-0" href="{{ route('token') }}">Test Pagamento</a>
                         </li>
                     </ul>
 
