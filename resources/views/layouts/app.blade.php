@@ -31,7 +31,7 @@
                     <div class="logo_laravel w-25 ">
                         <img src="/lugano-health-logo-1.png" alt="..." class="img-fluid ">
                     </div>
-                    <a id="app-title" href="{{ url('http://localhost:5173/') }}">LUGANO HEALTH</a>
+                    <a id="app-title" href="{{ url('http://localhost:5174/') }}">LUGANO HEALTH</a>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
