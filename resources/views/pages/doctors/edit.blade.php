@@ -40,6 +40,14 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="firstnameErrorRequired" class="mt-1 alert alert-danger p-2 mb-1 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il nome è obbligatorio</li>
+                                    </ul>
+
+                                    <ul id="firstnameErrorNumbers" class="alert alert-danger p-2 m-0 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Non può contenere numeri</li>
+                                    </ul>
                                 </div>
 
                             </div>
@@ -62,6 +70,14 @@
                                         </span>
                                     @enderror
 
+                                    <ul id="lastnameErrorRequired" class="mt-1 alert alert-danger p-2 mb-1 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il cognome è obbligatorio</li>
+                                    </ul>
+
+                                    <ul id="lastnameErrorNumbers" class="alert alert-danger p-2 m-0 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Non può contenere numeri</li>
+                                    </ul>
+
                                 </div>
 
                             </div>
@@ -83,6 +99,12 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="addressError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>L'indirizzo è obbligatorio</li>
+                                        <li class='text-danger fw-bold ms-4'>Deve essere presente almeno un numero</li>
+                                    </ul>
+
                                 </div>
 
 
@@ -105,6 +127,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="phoneNumberError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il numero di telefono è obbligatorio</li>
+                                        <li class='text-danger fw-bold ms-4'>Devono essere presenti solo numeri</li>
+                                    </ul>
                                 </div>
 
                             </div>
@@ -145,6 +172,10 @@
                                         </span>
                                     @enderror
 
+                                    <ul id="specializationsError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Seleziona almeno una specializzazione</li>
+                                    </ul>
+
                                 </div>
 
 
@@ -155,10 +186,10 @@
                                 <label for="performances" class="col-md-4 col-form-label text-md-right">
                                     <span>{{ __('Performance') }}</span>
                                 </label>
-                            
+
                                 <div class="col-md-8">
                                     <textarea id="performances" class="form-control @error('performances') is-invalid @enderror" name="performances">{{old('performances') ?? $doctor->performances}}</textarea>
-                            
+
                                     @error('performances')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -180,6 +211,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="cvFileError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>Il file CV deve essere in formato PDF, DOC, o DOCX
+                                        </li>
+                                    </ul>
 
                                     @if ($doctor->CV)
                                         <div class="my-1">
@@ -216,6 +252,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <ul id="profilePicFileError" class="mt-1 alert alert-danger p-2 d-none">
+                                        <li class='text-danger fw-bold ms-4'>La foto profilo deve essere in formato JPEG, JPG o PNG
+                                        </li>
+                                    </ul>
 
                                     @if ($doctor->ProfilePic)
                                         <div class="my-3">
