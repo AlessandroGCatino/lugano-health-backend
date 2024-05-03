@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<div class="d-flex flex-column justify-content-center align-items-center mt-5 mb-4 gap-3 ">
+<div class="d-flex flex-column justify-content-center align-items-center mt-5 mb-4 gap-3">
     <h3 class="d-green-color">“Curare a volte, alleviare spesso, confortare sempre.”</h3>
     <p>-Ippocrate</p>
 </div>

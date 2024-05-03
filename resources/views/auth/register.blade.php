@@ -3,6 +3,20 @@
 @section('title', 'Registrazione profilo')
 
 @section('content')
+
+<div id="dashboard" class="px-5 pb-3 pt-1 d-green-bg">
+    
+    <div class="row align-items-center mb-3">
+
+        <hr class="my-0 col-8">
+        <h2 class="fw-bold text-end s-yellow-color col-4">REGISTRATI</h2>
+
+    </div>
+
+</div>
+    
+    <div class="d-white-bg rounded-4 p-5 d-green-color">
+
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
