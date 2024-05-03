@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div id="dashboard" class="px-5 pb-3 pt-1 d-green-bg">
+<div class="dash-container px-5 pb-3 pt-1 d-green-bg">
     
     <div class="row align-items-center mb-3">
         
