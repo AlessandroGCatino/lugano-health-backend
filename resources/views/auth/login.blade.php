@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div id="dashboard" class="px-5 pb-3 pt-1 d-green-bg">
+<div id="dashboard" class="px-5 pb-5 pt-1 d-green-bg">
     
     <div class="row align-items-center mb-3">
         
@@ -62,7 +62,7 @@
         
             <!-- BUTTON -->
             <div class="row">
-                <button type="submit" class="btn btn-success mt-4 col-12">
+                <button type="submit" class="btn btn-success mb-2 col-12 w-50 mx-auto">
                     {{ __('Login') }}
                 </button>
         

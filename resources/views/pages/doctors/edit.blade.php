@@ -25,7 +25,7 @@
                 <!-- NAME -->
                 <div class="mb-4 row">
 
-                    <label for="name" class="col-md-4 col-form-label text-md-right">NOME *</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-right">NOME <span class="text-danger">*</span></label>
             
                     <div class="col-md-8">
                         <input maxlength="255" required type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $doctor->name }}">
@@ -49,7 +49,7 @@
             
                 <!-- SURNAME -->
                 <div class="mb-4 row">
-                    <label for="surname" class="col-md-4 col-form-label text-md-right">COGNOME *</label>
+                    <label for="surname" class="col-md-4 col-form-label text-md-right">COGNOME <span class="text-danger">*</span></label>
             
                     <div class="col-md-8">
                         <input type="text" maxlength="255" required class="form-control" id="surname" name="surname" value="{{ $doctor->surname }}">
@@ -74,7 +74,7 @@
             
                 <!-- ADDRESS -->
                 <div class="mb-4 row">
-                    <label for="address" class="col-md-4 col-form-label text-md-right">INDIRIZZO *</label>
+                    <label for="address" class="col-md-4 col-form-label text-md-right">INDIRIZZO <span class="text-danger">*</span></label>
             
                     <div class="col-md-8">
             
@@ -96,7 +96,7 @@
             
                 <!-- PHONE NUMBER -->
                 <div class="mb-4 row">
-                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">NUMERO TELEFONO *</label>
+                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">NUMERO TELEFONO <span class="text-danger">*</span></label>
             
                     <div class="col-md-8">
             
@@ -201,7 +201,7 @@
 
                 <!-- SPECIALIZATIONS -->
                 <div class="mb-4 row">
-                    <label for="specializations" class="col-md-2 col-form-label text-md-right">SPECIALIZZAZIONE *</label>
+                    <label for="specializations" class="col-md-2 col-form-label text-md-right">SPECIALIZZAZIONE <span class="text-danger">*</span></label>
 
                     <div class="col-md-10">
 
@@ -265,7 +265,7 @@
         </form>
     </div>
 
-    <h5 class="text-end s-yellow-color mt-4">* questi campi sono obbligatori</h5>
+    <h5 class="text-end s-yellow-color mt-4"><span class="text-danger">*</span> questi campi sono obbligatori</h5>
 </div>
         
 

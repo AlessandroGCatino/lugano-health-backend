@@ -15,6 +15,9 @@ body{
     background-color: #F4F1ED ;
 }
 
+h2{
+    margin-bottom: 0;
+}
 .d-white-bg{
     @include d-white-bg;
 }
