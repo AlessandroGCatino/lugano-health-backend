@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Doctor extends Model
@@ -52,6 +53,10 @@ class Doctor extends Model
 
     public function specializations(): BelongsToMany{
         return $this->belongsToMany(Specialization::class);
+    }
+
+    public function messages(): HasMany{
+        return $this->hasMany(Message::class);
     }
 
 }
