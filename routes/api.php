@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\DoctorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,8 @@ Route::get('/test', [DoctorController::class, 'index'])->name('testApi');
 Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
 
 Route::post('/messages', [MessageController::class, 'store']);
+
+Route::post('/reviews', [ReviewController::class, 'store']);
 
 Route::get('/doctors/specialization/{slug}', [DoctorController::class, 'getDoctorsBySpecializationSlug']);
 Route::get('/doctors/{slug}', [DoctorController::class, 'show']);

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             // MessageSeeder::class,
-            ReviewSeeder::class,
+            // ReviewSeeder::class,
             SpecializationSeeder::class,
             SponsorizationSeeder::class,
             VoteSeeder::class
