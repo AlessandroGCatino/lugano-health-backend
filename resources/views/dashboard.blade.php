@@ -41,13 +41,20 @@
 
                 <?php
 
-                    $oggi = new DateTime();
-                    $endSponsor = DateTime::createFromFormat("Y-m-d H:i:s", session("doctor")->sponsorizations->last()->pivot->deadline);                
+
+                    $ora = new DateTime();
+                    $endSponsor = "";
+
+                    if(session("doctor")->sponsorizations){
+                        $endSponsor = DateTime::createFromFormat("Y-m-d H:i:s", session("doctor")->sponsorizations->last()->pivot->deadline);                
+
+                    }
+
 
                 ?>
 
-                @if ($oggi<$endSponsor)
-                    <h1>Sponsorizzazione attiva</h1>
+                @if ($ora<$endSponsor)
+                    <h1 class="mt-3">Sponsorizzazione attiva</h1>
                 @endif
 
             </div>
