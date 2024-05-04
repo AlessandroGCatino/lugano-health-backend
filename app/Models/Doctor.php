@@ -55,6 +55,10 @@ class Doctor extends Model
         return $this->belongsToMany(Specialization::class);
     }
 
+    public function sponsorizations(): BelongsToMany{
+        return $this->belongsToMany(Sponsorization::class)->withPivot("start", "deadline");
+    }
+
     public function messages(): HasMany{
         return $this->hasMany(Message::class);
     }

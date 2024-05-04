@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BraintreeController;
+use App\Http\Controllers\BraintreeController2;
+use App\Http\Controllers\BraintreeController3;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
@@ -61,6 +63,14 @@ Route::middleware("auth")->group( function(){
 });
 
 Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
+
+Route::any('/payment2', [BraintreeController2::class, 'token'])->name('token2')->middleware('auth');
+
+Route::any('/payment3', [BraintreeController3::class, 'token'])->name('token3')->middleware('auth');
+
+Route::post('/assign-sponsorization', [DoctorController::class, 'assignSponsorizationToDoctor'])->name('doctor.assignSponsorization');
+
+
 
 
 require __DIR__.'/auth.php';
