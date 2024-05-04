@@ -19,11 +19,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($messages->sortByDesc('date_sent') as $message)
+                                    @foreach ($messages as $message)
                                         <tr>
-                                            <td>{{ $message->user_name }}</td>
-                                            <td>{{ $message->date_sent }}</td>
-                                            <td>{{ $message->user_mail }}</td>
+                                            <td>{{ $message->name }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($message->created_at)->format('j F Y') }}</td>
+                                            <td>{{ $message->email }}</td>
                                             <td>{{ $message->message }}</td>
                                         </tr>
                                     @endforeach
