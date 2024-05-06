@@ -105,6 +105,7 @@ class DoctorController extends Controller
             $query->where('id', $specialization->id);
         })
         ->orderBy('doctor_sponsorization.deadline', 'desc')
+        ->with('specializations','votes')
         ->get();
 
         return response()->json([
