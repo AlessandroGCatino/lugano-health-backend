@@ -20,7 +20,7 @@ class Specialization extends Model
         return Str::slug($name, '-');
     }
 
-    public function  doctors():BelongsToMany{
+    public function doctors():BelongsToMany{
         return $this->belongsToMany(Doctor::class);
     }
 
