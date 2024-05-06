@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sponsorization;
 use App\Http\Requests\StoreSponsorizationRequest;
 use App\Http\Requests\UpdateSponsorizationRequest;
+use Illuminate\Support\Facades\DB;
 
 class SponsorizationController extends Controller
 {
@@ -15,7 +16,12 @@ class SponsorizationController extends Controller
     {
         $sponsorizations = Sponsorization::all();
 
-        return view('pages.sponsorizations.index', compact('sponsorizations'));
+        $sponsorList = DB::table('doctor_sponsorization')
+        ->where('doctor_id', session("doctor")->id)
+        ->orderBy('deadline', 'desc') // Ordina in base alla deadline in ordine discendente
+        ->first();
+        
+        return view('pages.sponsorizations.index', compact('sponsorizations', "sponsorList"));
     }
 
     /**

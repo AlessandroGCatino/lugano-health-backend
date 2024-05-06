@@ -175,4 +175,113 @@ class DoctorController extends Controller
     
         return redirect()->route('dashboard', ['doctor' => $doctor->slug]);
     }
+
+    public function assignSponsorizationToDoctor2(Request $request) {
+
+
+        $doctor = Doctor::find($request->doctor_id);
+    
+        if (!$doctor) {
+            return redirect()->back()->with('error', 'Dottore non trovato.');
+        }
+    
+        $sponsorization = Sponsorization::find($request->sponsor_id);
+    
+        if (!$sponsorization) {
+            return redirect()->back()->with('error', 'Sponsorizzazione non trovata.');
+        }
+    
+
+        // $pivotData = $doctor->sponsorizations()->where("sponsorization_id", $sponsorization->id)->latest()->first();
+
+        $pivotData=$doctor->sponsorizations->last();
+
+        
+        
+        if($pivotData){
+            
+            $dataOggi = $pivotData->pivot->deadline;
+
+            $oggi = DateTime::createFromFormat("Y-m-d H:i:s", $dataOggi);
+
+        } else {
+            
+            $oggi = new DateTime(); // Ottieni la data e ora corrente
+        }
+
+        $domani = clone $oggi; // Clona l'oggetto per evitare di modificare $oggi direttamente
+        $domani->modify('+1 day');
+        $domani->modify('+1 day');
+        $domani->modify('+1 day'); // Aggiungi tre giorni
+        
+        $domani->format('Y-m-d H:i:s'); // Formatta e stampa la data e ora di domani
+        
+        // Metodo attach (aggiunge la sponsorizzazione al dottore)
+        $doctor->sponsorizations()->attach($sponsorization, ["start"=>$oggi, "deadline"=>$domani]);
+    
+        // Oppure, metodo sync (rimuove le sponsorizzazioni esistenti e aggiunge solo questa)
+        // $doctor->sponsorizations()->sync([$sponsorization->id]);
+
+        $logDoc = Doctor::with("sponsorizations")->find($request->doctor_id);
+
+        session(['doctor' => $logDoc]);
+    
+        return redirect()->route('dashboard', ['doctor' => $doctor->slug]);
+    }
+
+    public function assignSponsorizationToDoctor3(Request $request) {
+
+
+        $doctor = Doctor::find($request->doctor_id);
+    
+        if (!$doctor) {
+            return redirect()->back()->with('error', 'Dottore non trovato.');
+        }
+    
+        $sponsorization = Sponsorization::find($request->sponsor_id);
+    
+        if (!$sponsorization) {
+            return redirect()->back()->with('error', 'Sponsorizzazione non trovata.');
+        }
+    
+
+        // $pivotData = $doctor->sponsorizations()->where("sponsorization_id", $sponsorization->id)->latest()->first();
+
+        $pivotData=$doctor->sponsorizations->last();
+
+        
+        
+        if($pivotData){
+            
+            $dataOggi = $pivotData->pivot->deadline;
+
+            $oggi = DateTime::createFromFormat("Y-m-d H:i:s", $dataOggi);
+
+        } else {
+            
+            $oggi = new DateTime(); // Ottieni la data e ora corrente
+        }
+
+        $domani = clone $oggi; // Clona l'oggetto per evitare di modificare $oggi direttamente
+        $domani->modify('+1 day');
+        $domani->modify('+1 day');
+        $domani->modify('+1 day'); 
+        $domani->modify('+1 day');
+        $domani->modify('+1 day');
+        $domani->modify('+1 day'); // Aggiungi sei giorni
+        
+        $domani->format('Y-m-d H:i:s');
+        
+        // Metodo attach (aggiunge la sponsorizzazione al dottore)
+        $doctor->sponsorizations()->attach($sponsorization, ["start"=>$oggi, "deadline"=>$domani]);
+    
+        // Oppure, metodo sync (rimuove le sponsorizzazioni esistenti e aggiunge solo questa)
+        // $doctor->sponsorizations()->sync([$sponsorization->id]);
+
+        $logDoc = Doctor::with("sponsorizations")->find($request->doctor_id);
+
+        session(['doctor' => $logDoc]);
+    
+        return redirect()->route('dashboard', ['doctor' => $doctor->slug]);
+    }
 }

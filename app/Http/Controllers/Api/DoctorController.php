@@ -50,7 +50,7 @@ class DoctorController extends Controller
      */
     public function show($slug)
     {
-        $doctor = Doctor::where('slug', $slug)->with('specializations')->get();
+        $doctor = Doctor::where('slug', $slug)->with('specializations', 'votes', 'reviews')->get();
 
         if ($doctor) {
             return response()->json([
@@ -112,9 +112,28 @@ class DoctorController extends Controller
         ->with('specializations','votes')
         ->get();
 
+
+        $votes = DB::table('doctor_vote')
+        ->select('doctor_id', DB::raw('AVG(vote_id) as voteRating'))
+        ->groupBy('doctor_id') // Aggiungi un raggruppamento per ottenere la media per ogni dottore
+        ->orderBy('doctor_id')
+        ->get();
+
+        $votesArray = $votes->mapWithKeys(function ($item) {
+            return [$item->doctor_id => $item->voteRating];
+        })->all();
+        
+        // Unisci i risultati dei dottori con la media dei voti
+        $doctorsWithVotes = $doctors->map(function ($doctor) use ($votesArray) {
+            $doctor->voteRating = $votesArray[$doctor->id] ?? null;
+            return $doctor;
+        });
+
+
         return response()->json([
             'success' => true,
-            'doctors' => $doctors
+            'doctors' => $doctorsWithVotes,
+            // 'avgVotes' => $votes
         ]);
     }
 }

@@ -20,7 +20,7 @@
           <tr>
               <td>{{$item->user_name}}</td>
               <td>{{ $item->comment }}</td>
-              <td>{{ $item->created_at }}</td>
+              <td>{{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</td>
             </tr>
           @endforeach
   
