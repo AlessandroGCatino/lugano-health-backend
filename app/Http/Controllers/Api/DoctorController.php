@@ -101,6 +101,9 @@ class DoctorController extends Controller
                 ->from('doctor_sponsorization')
                 ->groupBy('doctor_id');
         })
+        ->whereHas('specializations', function ($query) use ($specialization) {
+            $query->where('id', $specialization->id);
+        })
         ->orderBy('doctor_sponsorization.deadline', 'desc')
         ->get();
 
