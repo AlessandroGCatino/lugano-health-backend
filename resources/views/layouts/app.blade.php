@@ -37,44 +37,41 @@
                 </svg>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav justify-content-end">
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item mt-3 mt-md-0 text-center ms-md-3 ms-0">
-                            <a class="nav-link btn btn-success" href="{{ route('login') }}">{{ __('ACCEDI') }}</a>
-                        </li>
+                    <li class="nav-item mt-3 mt-md-0 text-center ms-md-3 ms-0">
+                        <a class="nav-link btn btn-success" href="{{ route('login') }}">{{ __('ACCEDI') }}</a>
+                    </li>
                     @if (Route::has('register'))
-                        <li class="nav-item mt-3 mt-md-0 text-center mb-3 mb-md-0 ms-md-3 ms-0">
-                            <a class="nav-link btn btn-success" href="{{ route('register') }}">{{ __('REGISTRATI') }}</a>
-                        </li>
+                    <li class="nav-item mt-3 mt-md-0 text-center mb-3 mb-md-0 ms-md-3 ms-0">
+                        <a class="nav-link btn btn-success" href="{{ route('register') }}">{{ __('REGISTRATI') }}</a>
+                    </li>
                     @endif
                     @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle btn btn-success" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->doctor->name }} {{ Auth::user()->doctor->surname }}
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle btn btn-success" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->doctor->name }} {{ Auth::user()->doctor->surname }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
+                            <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profilo') }}</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
-        
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
-                                <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profilo') }}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-        
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
                     @endguest
                 </ul>
             </div>
+
         </div>
     </nav>
 </div>
