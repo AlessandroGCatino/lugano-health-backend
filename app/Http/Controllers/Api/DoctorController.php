@@ -50,7 +50,6 @@ class DoctorController extends Controller
     public function show($slug)
     {
         $doctor = Doctor::where('slug', $slug)->with('specializations')->get();
-        $doctor = Doctor::where('slug', $slug)->with('specializations')->get();
 
         if ($doctor) {
             return response()->json([
@@ -94,9 +93,16 @@ class DoctorController extends Controller
     {
         $specialization = Specialization::where('slug', $slug)->first();
 
-        $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
-            $query->where('id', $specialization->id);
-        })->with('specializations , votes')->get();
+        $doctors = Doctor::leftJoin('doctor_sponsorization', 'doctors.id', '=', 'doctor_sponsorization.doctor_id')
+        ->select('doctors.*', 'doctor_sponsorization.deadline')
+        ->whereNull('doctor_sponsorization.id') // Aggiungi questa condizione per selezionare solo le righe senza corrispondenza nella tabella pivot
+        ->orWhereIn('doctor_sponsorization.id', function ($query) {
+            $query->selectRaw('MAX(id)')
+                ->from('doctor_sponsorization')
+                ->groupBy('doctor_id');
+        })
+        ->orderBy('doctor_sponsorization.deadline', 'desc')
+        ->get();
 
         return response()->json([
             'success' => true,
