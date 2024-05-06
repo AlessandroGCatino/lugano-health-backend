@@ -9,7 +9,6 @@
   <table class="table table-striped mt-4">
       <thead>
         <tr>
-          <th class="col-3">Mail</th>
           <th class="col-3">Nome Utente</th>
           <th>Recensione</th>
           <th>Lasciata il</th>
@@ -19,11 +18,9 @@
   
           @foreach ( $reviews as $item )
           <tr>
-              
-              <td>{{$item->user_mail}}</td>
               <td>{{$item->user_name}}</td>
-              <td><a href="{{route('reviews.show', $item->id)}}">Mostra Recensione</a></td>
-              <td>{{$item->date_sent}}</td>
+              <td>{{ $item->comment }}</td>
+              <td>{{ $item->created_at }}</td>
             </tr>
           @endforeach
   

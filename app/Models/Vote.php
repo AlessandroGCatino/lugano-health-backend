@@ -15,8 +15,8 @@ class Vote extends Model
         'description'
     ];
     //una Vote è collegato a + dottors
-    public function vote(): BelongsToMany
-    {
-        return $this->belongsToMany(Vote::class);
+    public function  doctors():BelongsToMany{
+        return $this->belongsToMany(Doctor::class);
     }
+
 }

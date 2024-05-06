@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
 
-            $table->string('user_name')->required();
-            $table->string('user_mail')->required();
+            $table->string('name')->required();
+            $table->string('email')->required();
             $table->text('message')->nullable();
-            $table->date('date_sent');
 
             $table->unsignedBigInteger('doctor_id')->nullable();
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('set null');

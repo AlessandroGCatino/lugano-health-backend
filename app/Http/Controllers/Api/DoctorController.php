@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Specialization;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -14,16 +15,17 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::with('specializations')->get();
+        $doctors = Doctor::with('specializations','votes')->get();
         $specializations = Specialization::all();
+        $votes = Vote::all();
 
         return response()->json([
             'success' => true,
             'doctors' => $doctors,
             'specializations' => $specializations,
+            'votes' => $votes,
 
         ]);
-
     }
 
     /**
@@ -47,8 +49,8 @@ class DoctorController extends Controller
      */
     public function show($slug)
     {
-        $doctor = Doctor::where('slug',$slug)->with('specializations')->get();
-        $doctor = Doctor::where('slug',$slug)->with('specializations')->get();
+        $doctor = Doctor::where('slug', $slug)->with('specializations')->get();
+        $doctor = Doctor::where('slug', $slug)->with('specializations')->get();
 
         if ($doctor) {
             return response()->json([
@@ -88,42 +90,17 @@ class DoctorController extends Controller
     }
 
 
-    public function getDoctorsBySpecializationSlug($slug){
-    $specialization = Specialization::where('slug', $slug)->first();
+    public function getDoctorsBySpecializationSlug($slug)
+    {
+        $specialization = Specialization::where('slug', $slug)->first();
 
-    // if (!$specialization) {
-    //     return response()->json([
-    //         'success' => false,
-    //         'error' => 'Specialization not found'
-    //     ], 404);
-    // }
-    // if (!$specialization) {
-    //     return response()->json([
-    //         'success' => false,
-    //         'error' => 'Specialization not found'
-    //     ], 404);
-    // }
+        $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
+            $query->where('id', $specialization->id);
+        })->with('specializations , votes')->get();
 
-    $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
-        $query->where('id', $specialization->id);
-    })->with('specializations')->get();
-
-
-    // $doctors = Doctor::with('specializations')->whereHas('slug',$slug)->first();
-    // $doctors = Doctor::all();
-
-        // dd($doctors);
-
-
-    // $doctors = Doctor::with('specializations')->whereHas('slug',$slug)->first();
-    // $doctors = Doctor::all();
-
-        // dd($doctors);
-
-    return response()->json([
-        'success' => true,
-        'doctors' => $doctors
-    ]);
-}
-
+        return response()->json([
+            'success' => true,
+            'doctors' => $doctors
+        ]);
+    }
 }
