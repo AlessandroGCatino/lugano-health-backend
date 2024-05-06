@@ -29,6 +29,7 @@
             <div class="col-6">
                 <h1 class="mt-2 fw-bold">Dott. {{session('doctor')->name}}</h1>
                 <p class="mt-2">{{ session('doctor')->address }}</p>
+                
 
                 <!-- STARS -->
                 <div>
