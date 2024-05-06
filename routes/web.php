@@ -69,6 +69,8 @@ Route::any('/payment2', [BraintreeController2::class, 'token'])->name('token2')-
 Route::any('/payment3', [BraintreeController3::class, 'token'])->name('token3')->middleware('auth');
 
 Route::post('/assign-sponsorization', [DoctorController::class, 'assignSponsorizationToDoctor'])->name('doctor.assignSponsorization');
+Route::post('/assign-sponsorization2', [DoctorController::class, 'assignSponsorizationToDoctor2'])->name('doctor.assignSponsorization2');
+Route::post('/assign-sponsorization3', [DoctorController::class, 'assignSponsorizationToDoctor3'])->name('doctor.assignSponsorization3');
 
 
 
