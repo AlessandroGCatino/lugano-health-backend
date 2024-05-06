@@ -10,7 +10,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_name', 'user_mail', 'comment', 'date_sent', 'doctor_id'];
+    protected $fillable = ['user_name', 'user_mail','comment', 'doctor_id'];
 
     public function doctor(): BelongsTo{
         return $this->belongsTo(Doctor::class);

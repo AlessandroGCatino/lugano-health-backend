@@ -40,7 +40,7 @@ class Doctor extends Model
         $count = static::where('slug', $baseSlug)->count();
 
         if($count > 0){
-            $uniqueIdentifier = Str::random(5); 
+            $uniqueIdentifier = Str::random(5);
             return $baseSlug . '-' . $uniqueIdentifier;
         }
 
@@ -55,8 +55,19 @@ class Doctor extends Model
         return $this->belongsToMany(Specialization::class);
     }
 
+    public function sponsorizations(): BelongsToMany{
+        return $this->belongsToMany(Sponsorization::class)->withPivot("start", "deadline");
+    }
+
     public function messages(): HasMany{
         return $this->hasMany(Message::class);
     }
 
+    public function reviews(): HasMany{
+        return $this->hasMany(Review::class);
+    }
+
+    public function votes(): BelongsToMany{
+        return $this->belongsToMany(Vote::class);
+    }
 }

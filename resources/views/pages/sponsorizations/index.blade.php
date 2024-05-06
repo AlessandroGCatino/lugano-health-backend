@@ -27,5 +27,30 @@
 
     </tbody>
   </table> --}}
+
+  <div class="card mt-5 mb-3">
+                    <div class="card-header">
+                        <h2 class="fw-bold">Massimizza la Tua Visibilità</h2>
+                    </div>
+                    <div class="card-body ">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            @foreach ($sponsorizations as $element)
+                                <div class="col ">
+                                    <div class="card p-3 shadow my-4">
+                                        <h3>{{ $element->name }}</h3>
+                                        <p> {{ $element->description }} </p>
+                                        <p><span class="fw-bold">Prezzo</span>: {{ $element->price }}€</p> 
+                                        <p><span class="fw-bold">Durata</span>: {{ $element->durata }}h</p>
+                                        <button class="btn rounded-pill btn-primary">
+                                            Scegli
+                                        </button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                </div>
+
 </div>
 @endsection

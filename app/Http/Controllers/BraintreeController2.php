@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class BraintreeController extends Controller
+class BraintreeController2 extends Controller
 {
     public function token(Request $request){
 
@@ -19,7 +19,7 @@ class BraintreeController extends Controller
             $nonceFromTheClient = $request->input('nonce');
     
             $gateway->transaction()->sale([
-                'amount' => '10.00',
+                'amount' => '20.00',
                 'paymentMethodNonce' => $nonceFromTheClient,
                 'options' => [
                     'submitForSettlement' => True
@@ -28,9 +28,8 @@ class BraintreeController extends Controller
 
             return redirect()->route('dashboard');
         } else {
-            
             $clientToken = $gateway->clientToken()->generate();
-            return view ('pages.braintree',['token' => $clientToken]);
+            return view ('pages.braintree2',['token' => $clientToken]);
         }
     }
 }

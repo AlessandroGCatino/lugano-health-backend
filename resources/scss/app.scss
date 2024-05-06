@@ -15,6 +15,23 @@ body{
     background-color: #F4F1ED ;
 }
 
+h2{
+    margin-bottom: 0;
+}
+.d-white-bg{
+    @include d-white-bg;
+}
+.d-green-bg{
+    @include d-green-bg;
+}
+.d-green-color{
+    color: $d-green;
+}
+.s-yellow-color{
+    color: $s-yellow
+}
+
+// APP
 #app {
     nav {
         background-color: $d-green;
@@ -73,3 +90,25 @@ body{
 
     }
 }
+
+// CONTAINER
+.dash-container{
+    background-image: url(../../public/lugano-health-logo-1.png);
+    background-position: -150px calc(100% + 200px);
+    background-repeat: no-repeat;
+    hr{
+        color: $s-yellow;
+        opacity: 1;
+    }
+}
+
+#top{
+    background: linear-gradient(90deg, #233d29, #ffe600);
+  
+  }
+  .lugano-health {
+    font-size: 2.5em; 
+    font-family: 'Bebas Neue', sans-serif;
+    text-decoration: none;
+    color: $s-yellow;
+  }
