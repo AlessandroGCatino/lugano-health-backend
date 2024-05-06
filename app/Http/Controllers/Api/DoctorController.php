@@ -109,7 +109,7 @@ class DoctorController extends Controller
                 ->groupBy('doctor_id');
         })
         ->orderBy('doctor_sponsorization.deadline', 'desc')
-        ->with('specializations','votes')
+        ->with('specializations','votes', "reviews")
         ->get();
 
 
@@ -118,6 +118,17 @@ class DoctorController extends Controller
         ->groupBy('doctor_id') // Aggiungi un raggruppamento per ottenere la media per ogni dottore
         ->orderBy('doctor_id')
         ->get();
+
+        $reviews = DB::table('reviews')
+        ->select('doctor_id', DB::raw('COUNT(doctor_id) as nRevs'))
+        ->groupBy('doctor_id') // Aggiungi un raggruppamento per ottenere la somma per ogni dottore
+        ->orderBy('doctor_id')
+        ->get();
+
+        $reviewsArray = $reviews->mapWithKeys(function ($item) {
+            return [$item->doctor_id => $item->nRevs];
+        })->all();
+
 
         $votesArray = $votes->mapWithKeys(function ($item) {
             return [$item->doctor_id => $item->voteRating];
@@ -129,10 +140,15 @@ class DoctorController extends Controller
             return $doctor;
         });
 
+        $doctorsWithReviews = $doctorsWithVotes->map(function ($doctor) use ($reviewsArray) {
+            $doctor->nRevs = $reviewsArray[$doctor->id] ?? null;
+            return $doctor;
+        });
+
 
         return response()->json([
             'success' => true,
-            'doctors' => $doctorsWithVotes,
+            'doctors' => $doctorsWithReviews,
             // 'avgVotes' => $votes
         ]);
     }
