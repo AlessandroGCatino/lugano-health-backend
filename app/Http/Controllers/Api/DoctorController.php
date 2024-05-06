@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\Specialization;
 use App\Models\Vote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
@@ -93,15 +94,22 @@ class DoctorController extends Controller
     {
         $specialization = Specialization::where('slug', $slug)->first();
 
-        $doctors = Doctor::leftJoin('doctor_sponsorization', 'doctors.id', '=', 'doctor_sponsorization.doctor_id')
+        $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
+            $query->where('slug', $specialization->slug);
+        })
+        ->leftJoin('doctor_sponsorization', function ($join) {
+            $join->on('doctors.id', '=', 'doctor_sponsorization.doctor_id')
+                ->whereNull('doctor_sponsorization.deadline');
+        })
         ->select('doctors.*', 'doctor_sponsorization.deadline')
-        ->whereNull('doctor_sponsorization.id') // Aggiungi questa condizione per selezionare solo le righe senza corrispondenza nella tabella pivot
+        ->whereNull('doctor_sponsorization.id')
         ->orWhereIn('doctor_sponsorization.id', function ($query) {
             $query->selectRaw('MAX(id)')
                 ->from('doctor_sponsorization')
                 ->groupBy('doctor_id');
         })
         ->orderBy('doctor_sponsorization.deadline', 'desc')
+        ->with('specializations','votes')
         ->get();
 
         return response()->json([

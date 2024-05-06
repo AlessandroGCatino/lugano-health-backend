@@ -16,6 +16,14 @@
     <div style="display: flex;justify-content: center;align-items: center; color: black">
         <a id="submit-button" class="btn btn-sm btn-success">Submit payment</a>
     </div>
+
+
+    <form id="hiddenForm" action="{{ route('doctor.assignSponsorization3') }}" method="POST" style="display: none;">
+        @csrf <!-- Aggiungi il token CSRF se necessario -->
+        <input type="hidden" name="doctor_id" value="{{session('doctor')->id}}">
+        <input type="hidden" name="sponsor_id" value="3">
+    </form>
+
     <script>
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
@@ -37,8 +45,7 @@
                                 data: {nonce : payload.nonce},
                                 success: function (data) {
                                     console.log('success',payload.nonce)
-                                    window.location.href = "{{ route('dashboard') }}"
-                                    
+                                    document.getElementById('hiddenForm').submit();
                                 },
                                 error: function (data) {
                                     console.log('error',payload.nonce)
