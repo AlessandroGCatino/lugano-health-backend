@@ -13,7 +13,7 @@
   ?>
 
   @if ($ora<$endSponsor)
-  <h1 class="mt-3 text-center ">Sponsorizzazione attiva</h1>
+  <h1 class="mt-3 text-center ">Sponsorizzazione attiva fino al {{$sponsorList->deadline}}</h1>
   @endif
 @endif
 
