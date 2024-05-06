@@ -1,34 +1,28 @@
 @extends('layouts.app')
 
-@section('title','La tua Dashboard')
+@section('title', 'La tua Dashboard')
 
 
 @section('content')
 
-<div id="dashboard" class="px-5 pb-5 pt-1 d-green-bg">
+    <div id="dashboard" class="px-5 pb-5 pt-1 d-green-bg">
 
-<hr class="my-0 mb-5">
+        <hr class="my-0 mb-5">
 
-    {{-- {{dd(session('doctor')->name)}} --}}
-    
-    <div class="row d-white-bg rounded-4 p-5 d-green-color">
+        {{-- {{dd(session('doctor')->name)}} --}}
 
-        <!-- foto profilo -->
-        <figure class="col-3 d-flex align-items-center justify-content-center">
-            @if (session('doctor')->ProfilePic === null )
-            <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="/userpicture.jpg" alt="ProfilePicture">
-            
-            @else
-            
-            <img class="img-fluid img-thumbnail rounded rounded-circle w-50 ms-auto ratio ratio-1x1 " src="{{ asset('/storage/' . session('doctor')->ProfilePic) }}" alt="ProfilePicture">
-            
-            @endif
-        </figure>
+        <div class="row d-white-bg rounded-4 p-5 d-green-color">
 
-        <div class="col-9 row">
-            <div class="col-6">
-                <h1 class="mt-2 fw-bold">Dott. {{session('doctor')->name}}</h1>
-                <p class="mt-2">{{ session('doctor')->address }}</p>
+            <!-- foto profilo -->
+            <figure class="col-3 d-flex align-items-center justify-content-center">
+                @if (session('doctor')->ProfilePic === null)
+                    <img class="img-fluid img-thumbnail rounded rounded-circle w-50" src="/userpicture.jpg"
+                        alt="ProfilePicture">
+                @else
+                    <img class="img-fluid img-thumbnail rounded rounded-circle w-50 ms-auto ratio ratio-1x1 "
+                        src="{{ asset('/storage/' . session('doctor')->ProfilePic) }}" alt="ProfilePicture">
+                @endif
+            </figure>
 
                 <!-- STARS -->
                 <div>
@@ -70,12 +64,10 @@
 
             </div>
         </div>
-    </div>
-</div>
 
-<div class="d-flex flex-column justify-content-center align-items-center mt-5 mb-4 gap-3 ">
-    <h3 class="d-green-color">“Curare a volte, alleviare spesso, confortare sempre.”</h3>
-    <p>-Ippocrate</p>
-</div>
+        <div class="d-flex flex-column justify-content-center align-items-center mt-5 mb-4 gap-3 ">
+            <h3 class="d-green-color">“Curare a volte, alleviare spesso, confortare sempre.”</h3>
+            <p>-Ippocrate</p>
+        </div>
 
-@endsection
+    @endsection
