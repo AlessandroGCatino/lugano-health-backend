@@ -45,8 +45,8 @@
                     $ora = new DateTime();
                     $endSponsor = "";
 
-                    if(session("doctor")->sponsorizations){
-                        $endSponsor = DateTime::createFromFormat("Y-m-d H:i:s", session("doctor")->sponsorizations->last()->pivot->deadline);                
+                    if(session("doctor")->sponsorizations = ""){
+                        $endSponsor = DateTime::createFromFormat("Y-m-d H:i:s", session("doctor")->sponsorizations->last()->pivot->deadline);
 
                     }
 
