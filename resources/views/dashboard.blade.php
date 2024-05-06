@@ -5,7 +5,7 @@
 
 @section('content')
 
-<div id="dashboard" class="px-5 pb-5 pt-1 d-green-bg">
+<div class="dash-container px-5 pb-5 pt-1 d-green-bg">
 
 <hr class="my-0 mb-5">
 

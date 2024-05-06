@@ -16,7 +16,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::with('specializations')->get();
+        $doctors = Doctor::with('specializations','votes')->get();
         $specializations = Specialization::all();
         $votes = Vote::all();
 
@@ -109,6 +109,7 @@ class DoctorController extends Controller
                 ->groupBy('doctor_id');
         })
         ->orderBy('doctor_sponsorization.deadline', 'desc')
+        ->with('specializations','votes')
         ->get();
 
         return response()->json([
