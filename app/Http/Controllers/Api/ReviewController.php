@@ -16,6 +16,7 @@ class ReviewController extends Controller
 
         $validator = Validator::make($data, [
             'user_name' => 'required',
+            'user_mail' => 'required|email',
             'comment' => 'required',
         ]);
 
@@ -35,6 +36,6 @@ class ReviewController extends Controller
         return response()->json([
             'success' => true
         ]);
-        
+
     }
 }
