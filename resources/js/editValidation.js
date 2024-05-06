@@ -1,74 +1,102 @@
-document.getElementById('editDataForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+let validateFirstNameRequired = true;
+let validateFirstNameNumbers = true;
+let validateLasttNameRequired = true;
+let validateLasttNameNumbers = true;
+let validateAddress = true;
+let validatePhoneNumber = true;
+let validateSpecializations = true;
+let validateCv = true;
+let validatePfp = true;
 
-    // Firstname
-    let firstname = document.getElementById('name').value;
-    if (firstname.trim() === '') {
-        alert('Il nome è obbligatorio.');
-        return false;
-    }
-    if (/[0-9]/.test(firstname)) {
-        alert('Il nome non deve contenere numeri.');
-        return false;
-    }
+document.addEventListener('DOMContentLoaded', function () {
 
-    // Lastname
-    let lastname = document.getElementById('surname').value;
-    if (lastname.trim() === '') {
-        alert('Il cognome è obbligatorio.');
-        return false;
-    }
-    if (/[0-9]/.test(lastname)) {
-        alert('Il cognome non deve contenere numeri.');
-        return false;
-    }
+    if (document.getElementById('editDataForm')) {
 
-    // Address
-    let address = document.getElementById('address').value;
-    if (address.trim() === '') {
-        alert('L\'indirizzo è obbligatorio.');
-        return false;
-    }
-    if (!/[0-9]/.test(address)) {
-        alert('L\'indirizzo deve contenere almeno un numero.');
-        return false;
-    }
+        document.getElementById('editDataForm').addEventListener('submit', function (event) {
 
-    // Phone
-    let phoneNumber = document.getElementById('phone_number').value;
-    if (!/^[0-9]+$/.test(phoneNumber)) {
-        alert('Il numero di telefono deve contenere solo numeri.');
-        return false;
-    }
+            let firstname = document.getElementById('name').value;
+            let firstnameErrorRequired = document.getElementById('firstnameErrorRequired')
+            let firstnameErrorNumbers = document.getElementById('firstnameErrorNumbers')
+            if (firstname.trim() === '') {
+                event.preventDefault();
+                validateFirstNameRequired = false;
+                firstnameErrorRequired.classList.remove('d-none');
+            }
+            if (/[0-9]/.test(firstname)) {
+                event.preventDefault();
+                validateFirstNameNumbers = false;
+                firstnameErrorNumbers.classList.remove('d-none');
+            }
 
-    // Specializations
-    let specializations = document.getElementById('specializations');
-    let selectedSpecializations = Array.from(specializations.selectedOptions).map(option => option.value);
-    if (selectedSpecializations.length === 0) {
-        alert('Seleziona almeno una specializzazione.');
-        return false;
-    }
+            let lastname = document.getElementById('surname').value;
+            let lastnameErrorRequired = document.getElementById('lastnameErrorRequired')
+            let lastnameErrorNumbers = document.getElementById('lastnameErrorNumbers')
+            if (lastname.trim() === '') {
+                event.preventDefault();
+                validateLasttNameRequired = false;
+                lastnameErrorRequired.classList.remove('d-none');
+            }
+            if (/[0-9]/.test(lastname)) {
+                event.preventDefault();
+                validateLasttNameNumbers = false;
+                lastnameErrorNumbers.classList.remove('d-none');
+            }
 
-    // CV
-    let cvFile = document.getElementById('CV').files[0];
-    if (cvFile) {
-        let fileExtension = cvFile.name.split('.').pop().toLowerCase();
-        if (fileExtension !== 'pdf' && fileExtension !== 'doc' && fileExtension !== 'docx') {
-            alert('Il file CV deve essere in formato PDF, DOC, o DOCX.');
-            return false;
-        }
-    }
+            let address = document.getElementById('address').value;
+            let addressError = document.getElementById('addressError');
+            if (address.trim() === '' || !/\d/.test(address)) {
+                event.preventDefault();
+                validateAddress = false;
+                addressError.classList.remove('d-none');
+            }
 
-    // Profile Picture
-    let profilePicFile = document.getElementById('profile_pic').files[0];
-    if (profilePicFile) {
-        let fileExtension = profilePicFile.name.split('.').pop().toLowerCase();
-        if (!['jpg', 'jpeg', 'png'].includes(fileExtension)) {
-            alert('La foto del profilo deve essere un\'immagine (JPG, JPEG, PNG).');
-            return false;
-        }
-    }
+            let phoneNumber = document.getElementById('phone_number').value;
+            let phoneNumberError = document.getElementById('phoneNumberError');
+            if (!/^[0-9]+$/.test(phoneNumber)) {
+                event.preventDefault();
+                validatePhoneNumber = false;
+                phoneNumberError.classList.remove('d-none');
+            }
 
-    // The data are transmitted to the server
-    this.submit();
+            let specializations = document.getElementById('specializations');
+            let specializationsError = document.getElementById('specializationsError');
+            let selectedSpecializations = Array.from(specializations.selectedOptions).map(option => option.value);
+            if (selectedSpecializations.length === 0) {
+                event.preventDefault();
+                validateSpecializations = false;
+                specializationsError.classList.remove('d-none');
+            }
+
+            let cvFile = document.getElementById('CV').files[0];
+            let cvFileError = document.getElementById('cvFileError');
+            if (cvFile) {
+                let fileExtension = cvFile.name.split('.').pop().toLowerCase();
+                if (fileExtension !== 'pdf' && fileExtension !== 'doc' && fileExtension !== 'docx') {
+                    event.preventDefault();
+                    validateCv = false;
+                    cvFileError.classList.remove('d-none');
+                }
+            }
+
+            let profilePicFile = document.getElementById('profile_pic').files[0];
+            let profilePicFileError = document.getElementById('profilePicFileError');
+            if (profilePicFile) {
+                let fileExtension = profilePicFile.name.split('.').pop().toLowerCase();
+                if (!['jpg', 'jpeg', 'png'].includes(fileExtension)) {
+                    event.preventDefault();
+                    validatePfp = false;
+                    profilePicFileError.classList.remove('d-none');
+                }
+            }
+
+            if (validateFirstNameRequired && validateFirstNameNumbers && validateLasttNameRequired && validateLasttNameNumbers && validateAddress && validatePhoneNumber && validateSpecializations && validateCv && validatePfp) {
+                this.submit();
+            }
+        })
+
+    }
 });
+
+
+
+
