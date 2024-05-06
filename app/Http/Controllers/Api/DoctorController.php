@@ -15,7 +15,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::with('specializations')->get();
+        $doctors = Doctor::with('specializations','votes')->get();
         $specializations = Specialization::all();
         $votes = Vote::all();
 
@@ -96,7 +96,7 @@ class DoctorController extends Controller
 
         $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
             $query->where('id', $specialization->id);
-        })->with('specializations')->get();
+        })->with('specializations , votes')->get();
 
         return response()->json([
             'success' => true,
