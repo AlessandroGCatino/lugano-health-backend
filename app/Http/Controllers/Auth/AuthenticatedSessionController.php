@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
@@ -31,13 +32,29 @@ class AuthenticatedSessionController extends Controller
 
         $userr = User::where("email" , $request->email)->value("id");
 
-        $doctor = Doctor::where("user_id" , $userr)->first();
+        $doctors = Doctor::where("user_id" , $userr)->get();
+
+        $votes = DB::table('doctor_vote')
+        ->select('doctor_id', DB::raw('AVG(vote_id) as voteRating'))
+        ->groupBy('doctor_id') // Aggiungi un raggruppamento per ottenere la media per ogni dottore
+        ->orderBy('doctor_id')
+        ->get();
+
+        $votesArray = $votes->mapWithKeys(function ($item) {
+            return [$item->doctor_id => $item->voteRating];
+        })->all();
+        
+        // Unisci i risultati dei dottori con la media dei voti
+        $doctorsWithVotes = $doctors->map(function ($doctor) use ($votesArray) {
+            $doctor->voteRating = $votesArray[$doctor->id] ?? null;
+            return $doctor;
+        });
 
 
         // $request["user"] = $userr;
         // $request["doctor"] = $doctor;
 
-
+        $doctor = $doctorsWithVotes->first();
 
 
         $request->session()->regenerate();
