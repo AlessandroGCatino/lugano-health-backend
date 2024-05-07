@@ -84,7 +84,7 @@
                 <!-- MAIL -->
                 <div class="mb-4 row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">
-                        <span>{{ __('E-Mail Address') }}</span>
+                        <span>{{ __('Indirizzo Email') }}</span>
                         <span class="text-danger">*</span>
                     </label>
     
@@ -242,8 +242,7 @@
                 <!-- PROFILE PIC -->
                 <div class="mb-4 row">
     
-                    <label for="ProfilePic" class="col-md-4 col-form-label text-md-right">Profile
-                        Picture:</label>
+                    <label for="ProfilePic" class="col-md-4 col-form-label text-md-right">Foto Profilo:</label>
     
                     <div class="col-md-8">
                         <input type="file" class="form-control" id="ProfilePic" name="ProfilePic">

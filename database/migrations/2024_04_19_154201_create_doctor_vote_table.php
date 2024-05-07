@@ -18,9 +18,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('vote_id')->required();
             $table->foreign('vote_id')->references('id')->on('votes')->cascadeOnDelete();
-
-            $table->primary(['doctor_id','vote_id']);
-
         });
     }
 
