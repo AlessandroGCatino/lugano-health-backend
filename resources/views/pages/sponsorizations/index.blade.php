@@ -37,6 +37,14 @@
         </div>
     
     @endif
+@else
+    
+        <div class="alert alert-danger">
+    
+        <h1 class="mt-3 text-center ">Nessuna sponsorizzazione attiva</h1>
+      
+        </div>
+    
 @endif
 
 
