@@ -34,4 +34,6 @@ Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/votes', [VoteController::class, 'store']);
 
 Route::get('/doctors/specialization/{slug}', [DoctorController::class, 'getDoctorsBySpecializationSlug']);
+Route::get('/doctors', [DoctorController::class, 'getSponsorizedDoctors']);
+
 Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
