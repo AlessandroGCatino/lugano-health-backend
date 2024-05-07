@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\VoteController;
 use App\Http\Controllers\Api\DoctorController;
 // use App\Http\Controllers\Api\VoteController;
 use App\Models\Vote;
