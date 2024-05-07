@@ -3,35 +3,40 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
-use App\Models\Vote;
 use App\Models\Doctor;
-use App\Mail\NewContact;
+use App\Models\Vote;
+use Illuminate\Http\Request;
 
 class VoteController extends Controller
 {
     public function store(Request $request){
+
         $data = $request->all();
 
-        $validator = Validator::make($data, [
-            'doctor_id' => 'required|exists:doctors,id',
-            'vote_id' => 'required|exists:votes,id',
-        ]);
 
-        if($validator->fails()){
+        $doctor = Doctor::find($data['doctor_id']);
+
+        if (!$doctor) {
             return response()->json([
                 'success' => false,
-                'errors' => $validator->errors()
-            ]);
+                'message' => 'Dottore non trovato.'
+            ], 404);
         }
 
-        $doctor = Doctor::findOrFail($data['doctor_id']);
+        $vote = Vote::find($data['vote_id']);
+        
+        if (!$vote) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Voto non trovato.'
+            ], 404);
+        }
 
-        $doctor->votes()->attach($data['vote_id']);
-
-        return response()->json(['success' => true]);
-
+        // Aggiungi i dati alla tabella pivot doctor_vote
+        $doctor->votes()->attach($vote);
+            
+        return response()->json([
+            'success' => true
+        ]);
     }
 }
