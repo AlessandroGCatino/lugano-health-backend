@@ -27,6 +27,9 @@ h2{
 .d-green-color{
     color: $d-green;
 }
+.d-white-color{
+    color: $d-white;
+}
 .s-yellow-color{
     color: $s-yellow
 }
@@ -115,3 +118,27 @@ h2{
     text-decoration: none;
     color: $s-yellow;
   }
+
+// FOOTER
+
+footer{
+    h4{
+        color: $s-yellow;
+    }
+    
+    a{
+        text-decoration: none;
+        color: $d-white;
+        &:hover{
+            color: $s-yellow;
+        }
+    }
+    svg{
+        fill: gold;
+        width: 40px;
+        height: 40px;
+        &:hover{
+            fill: $d-white;
+        }
+    }
+}
