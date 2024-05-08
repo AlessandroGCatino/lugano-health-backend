@@ -7,3 +7,7 @@
 @mixin d-white-bg {
   background-color: $d-white;
 }
+
+@mixin italic{
+  font-family: $font-italic;
+}

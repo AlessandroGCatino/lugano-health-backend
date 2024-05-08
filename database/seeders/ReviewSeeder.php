@@ -24,36 +24,74 @@ class ReviewSeeder extends Seeder
         }
 
         $recensioni_dottori = [
-            "Il dottor Rossi è un professionista eccezionale, attento e competente, mi ha aiutato molto nel gestire il mio problema di salute.",
-            "Sono rimasto molto soddisfatto della visita dalla dottoressa Bianchi, ha spiegato tutto in modo chiaro e mi ha dato ottimi consigli sulla cura della mia condizione.",
-            "Il dottor Verdi è un medico molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
-            "Purtroppo la mia esperienza con la dottoressa Moretti non è stata positiva, ho avuto difficoltà a comunicare con lei e non mi sono sentito ascoltato durante la visita.",
-            "Consiglio vivamente il dottor Russo, professionale e disponibile, ha risolto il mio problema in modo rapido e efficace.",
-            "La dottoressa Conti è un medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri.",
-            "Ho trovato il dottor Ferrari molto competente nel suo campo, ha saputo diagnosticare il mio disturbo con precisione e mi ha guidato verso la terapia più adatta.",
-            "La dottoressa Romano è stata molto gentile e professionale durante la mia visita, mi ha tranquillizzato e mi ha dato fiducia nel percorso di cura.",
-            "Il dottor Esposito è un professionista eccezionale, attento e competente, mi ha aiutato molto nel gestire il mio problema di salute.",
-            "Sono rimasto molto soddisfatto della visita dalla dottoressa Mancini, ha spiegato tutto in modo chiaro e mi ha dato ottimi consigli sulla cura della mia condizione.",
-            "Il dottor Marini è un medico molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
-            "La dottoressa Rizzo è un medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri.",
-            "Il dottor Barbieri è un medico molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
-            "La dottoressa Greco è sempre disponibile a rispondere alle mie domande e dubbi, mi ha supportato durante tutto il percorso di guarigione.",
-            "Ho trovato il dottor Russo molto competente nel suo campo, ha saputo diagnosticare il mio disturbo con precisione e mi ha guidato verso la terapia più adatta.",
+            "Professionista eccezionale, attento e competente, mi ha aiutato molto nel gestire il mio problema di salute.",
+            "Sono rimasto molto soddisfatto della visita, ha spiegato tutto in modo chiaro e mi ha dato ottimi consigli sulla cura della mia condizione.",
+            "Molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
+            "Consiglio vivamente, professionale e disponibile, ha risolto il mio problema in modo rapido e efficace.",
+            "Medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri.",
+            "Ho trovato il dottore molto competente nel suo campo, ha saputo diagnosticare il mio disturbo con precisione e mi ha guidato verso la terapia più adatta.",
+            "Il dottore è un professionista eccezionale, attento e competente, mi ha aiutato molto nel gestire il mio problema di salute.",
+            "Il dottore è un medico molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
+            "Il dottore è un medico molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
+            "Ho trovato il dottore molto competente nel suo campo, ha saputo diagnosticare il mio disturbo con precisione e mi ha guidato verso la terapia più adatta.",
+            "Sono rimasto molto soddisfatto della visita dalla dottoressa, ha spiegato tutto in modo chiaro e mi ha dato ottimi consigli sulla cura della mia condizione.",
+            "La dottoressa è un medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri.",
+            "Purtroppo la mia esperienza non è stata positiva, ho avuto difficoltà a comunicare con lei e non mi sono sentito ascoltato durante la visita.",
+            "La dottoressa è sempre disponibile a rispondere alle mie domande e dubbi, mi ha supportato durante tutto il percorso di guarigione.",
+            "La dottoressa è stata molto gentile e professionale durante la mia visita, mi ha tranquillizzato e mi ha dato fiducia nel percorso di cura.",
             "Ho avuto una buona esperienza con la dottoressa Costa, ha una grande empatia verso i pazienti e si impegna per fornire il miglior trattamento possibile.",
-            "Il dottor Sanna è un medico molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
-            "La dottoressa Ferri è un medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri.",
-            "Il dottor Vitale è un professionista eccezionale, attento e competente, mi ha aiutato molto nel gestire il mio problema di salute.",
-            "La dottoressa Pellegrini è un medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri."
+            "Il dottore è un medico molto gentile e empatico, ha ascoltato le mie preoccupazioni e mi ha fornito un trattamento efficace.",
+            "La dottoressa è un medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri.",
+            "É una professionista eccezionale, attenta e competente, mi ha aiutato molto nel gestire il mio problema di salute.",
+            "La dottoressa è un medico molto preparato, mi ha dato ottime indicazioni per migliorare il mio stile di vita e prevenire problemi futuri."
         ];
 
-        for($i=0; $i<20; $i++){
+
+        for($i=0; $i<10; $i++){
             $newReview = new Review();
             $newReview->user_name = $usernames[$i];
+            $newReview->comment = $recensioni_dottori[rand(0, 9)];
             $newReview->user_mail = $emails[$i];
-            $newReview->comment = $recensioni_dottori[$i];
-            $newReview->date_sent = $dates[$i];
-            // $newReview->doctor_id = $i+1;
+            $newReview->created_at = $dates[$i];
+            $newReview->updated_at = $dates[$i];
+            $newReview->doctor_id = $i+1;
             $newReview->save();
         };
+
+        for($i=0; $i<10; $i++){
+            $newReview = new Review();
+            $newReview->user_name = $usernames[$i+10];
+            $newReview->comment = $recensioni_dottori[rand(10, 19)];
+            $newReview->user_mail = $emails[$i+10];
+            $newReview->created_at = $dates[$i+10];
+            $newReview->updated_at = $dates[$i+10];
+            $newReview->doctor_id = $i+10;
+            $newReview->save();
+        };
+
+        for($i=0; $i<15; $i++){
+            $newReview = new Review();
+            $newReview->user_name = $usernames[rand(0, 19)];
+            $newReview->comment = $recensioni_dottori[rand(10, 19)];
+            $newReview->user_mail = $emails[rand(0, 19)];
+            $newReview->created_at = $dates[$i+1];
+            $newReview->updated_at = $dates[$i+1];
+            $newReview->doctor_id = rand(11, 20);
+            $newReview->save();
+        };
+
+        for($i=0; $i<15; $i++){
+            $newReview = new Review();
+            $newReview->user_name = $usernames[rand(0, 19)];
+            $newReview->comment = $recensioni_dottori[rand(0, 9)];
+            $newReview->user_mail = $emails[rand(0, 19)];
+            $newReview->created_at = $dates[$i+1];
+            $newReview->updated_at = $dates[$i+1];
+            $newReview->doctor_id = rand(1, 10);
+            $newReview->save();
+        };
+
+
+        
     }
 }

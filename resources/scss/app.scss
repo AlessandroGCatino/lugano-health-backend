@@ -30,6 +30,9 @@ h2{
 .s-yellow-color{
     color: $s-yellow
 }
+.italic{
+    @include italic;
+}
 
 // APP
 #app {

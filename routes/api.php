@@ -3,7 +3,7 @@ use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\VoteController;
 use App\Http\Controllers\Api\DoctorController;
-use App\Http\Controllers\Api\VoteController;
+// use App\Http\Controllers\Api\VoteController;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +34,6 @@ Route::post('/reviews', [ReviewController::class, 'store']);
 Route::post('/votes', [VoteController::class, 'store']);
 
 Route::get('/doctors/specialization/{slug}', [DoctorController::class, 'getDoctorsBySpecializationSlug']);
+Route::get('/doctors', [DoctorController::class, 'getSponsorizedDoctors']);
+
 Route::get('/doctors/{slug}', [DoctorController::class, 'show']);
