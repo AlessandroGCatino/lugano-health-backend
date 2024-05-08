@@ -19,7 +19,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::where("doctor_id", session('doctor')->id)->get();
+        $reviews = Review::where("doctor_id", session('doctor')->id)->orderBy('created_at', 'desc')->get();
 
         return view('pages.reviews.index', compact('reviews'));
     }
