@@ -10,11 +10,41 @@
   $ora = new DateTime();
   $endSponsor = DateTime::createFromFormat("Y-m-d H:i:s", $sponsorList->deadline);
 
+
   ?>
 
   @if ($ora<$endSponsor)
-  <h1 class="mt-3 text-center ">Sponsorizzazione attiva fino al {{$sponsorList->deadline}}</h1>
-  @endif
+
+    <?php
+    
+    $data_originale = $sponsorList->deadline;
+    $timestamp = strtotime($data_originale);
+    $data_in_formato_italiano = date('d/m/Y', $timestamp);
+
+    ?>
+
+    <div class="alert alert-success">
+
+      <h1 class="mt-3 text-center ">Sponsorizzazione attiva fino al {{$data_in_formato_italiano}}</h1>
+    
+    </div>
+    @else
+    
+        <div class="alert alert-danger">
+    
+        <h1 class="mt-3 text-center ">Nessuna sponsorizzazione attiva</h1>
+      
+        </div>
+    
+    @endif
+@else
+    
+        <div class="alert alert-danger">
+    
+        <h1 class="mt-3 text-center ">Nessuna sponsorizzazione attiva</h1>
+      
+        </div>
+    
 @endif
 
 
