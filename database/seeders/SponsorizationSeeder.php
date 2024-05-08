@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Sponsorization;
+use DateTime;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SponsorizationSeeder extends Seeder
 {
@@ -26,5 +28,24 @@ class SponsorizationSeeder extends Seeder
             $newSponsorization->durata = $timespan[$i];
             $newSponsorization->save();
         };
+
+        $startGenerico = new DateTime();
+        $deadlineGenerica = clone $startGenerico; // Clona l'oggetto per evitare di modificare $oggi direttamente
+        $deadlineGenerica->modify('+3 day'); // Aggiungi un giorno
+        
+
+        $pivotTableData = [
+            ['id'=>1, 'doctor_id' => 10, 'sponsorization_id' => 1, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            ['id'=>2, 'doctor_id' => 12, 'sponsorization_id' => 2, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            ['id'=>3, 'doctor_id' => 2, 'sponsorization_id' => 3, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            ['id'=>4, 'doctor_id' => 4, 'sponsorization_id' => 1, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            ['id'=>5, 'doctor_id' => 5, 'sponsorization_id' => 3, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            ['id'=>6, 'doctor_id' => 6, 'sponsorization_id' => 1, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            ['id'=>7, 'doctor_id' => 8, 'sponsorization_id' => 2, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            ['id'=>8, 'doctor_id' => 1, 'sponsorization_id' => 2, "start" => $startGenerico, "deadline" => $deadlineGenerica],
+            
+        ];
+
+        DB::table('doctor_sponsorization')->insert($pivotTableData);
     }
 }
