@@ -34,6 +34,7 @@
 
 
                 <!-- STARS -->
+
                 <div>
                         <h5>La tua media voti:</h5>
                         @for ($i = 0; $i < session('doctor')->voteRating; $i++)

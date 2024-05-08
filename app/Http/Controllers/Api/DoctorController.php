@@ -94,12 +94,13 @@ class DoctorController extends Controller
     {
         $specialization = Specialization::where('slug', $slug)->first();
 
-        $doctors = Doctor::whereHas('specializations', function ($query) use ($specialization) {
-            $query->where('slug', $specialization->slug);
-        })
-        ->leftJoin('doctor_sponsorization', function ($join) {
+        $doctors = Doctor::
+        leftJoin('doctor_sponsorization', function ($join) {
             $join->on('doctors.id', '=', 'doctor_sponsorization.doctor_id')
-                ->whereNull('doctor_sponsorization.deadline');
+            ->whereNotNull('doctor_sponsorization.deadline');
+        })
+        ->whereHas('specializations', function ($query) use ($specialization) {
+            $query->where('slug', $specialization->slug);
         })
         ->select('doctors.*', 'doctor_sponsorization.deadline')
         ->whereNull('doctor_sponsorization.id')
@@ -108,7 +109,11 @@ class DoctorController extends Controller
                 ->from('doctor_sponsorization')
                 ->groupBy('doctor_id');
         })
+        ->whereHas('specializations', function ($query) use ($specialization) {
+            $query->where('slug', $specialization->slug);
+        })
         ->orderBy('doctor_sponsorization.deadline', 'desc')
+        ->distinct('doctors.id')
         ->with('specializations','votes', "reviews")
         ->get();
 
