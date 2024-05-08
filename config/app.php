@@ -213,3 +213,5 @@ return [
     ])->toArray(),
 
 ];
+
+setlocale(LC_TIME, 'it_IT');

@@ -1,33 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="px-5 pb-5 pt-1 d-green-bg">
 
-<div class="container">
+  <div class="row align-items-center mb-3 mt-4">
 
-  <h1 class="mt-2 fw-bold">Le tue recensioni</h1>
-    
-  <table class="table table-striped mt-4">
-      <thead>
-        <tr>
-          <th class="col-3">Nome Utente</th>
-          <th>Recensione</th>
-          <th>Lasciata il</th>
-        </tr>
-      </thead>
-      <tbody>
+    <hr class="my-0 col-8">
+    <h2 class="fw-bold text-end s-yellow-color col-4">LE TUE RECENSIONI</h2>
+
+  </div>
   
-          @foreach ( $reviews as $item )
-          <tr>
-              <td>{{$item->user_name}}</td>
-              <td>{{ $item->comment }}</td>
-              <td>{{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</td>
-            </tr>
-          @endforeach
-  
-      </tbody>
-    </table>
+  <div class="row mt-4 mb-5">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body d-white-bg">
+          <div class="table-responsive">
+            <table class="table rounded-3 d-white-bg table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Da</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Recensione</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ( $reviews as $item )
+                  <tr>
+                    <td class="text-capitalize">{{$item->user_name}}</td>
+                    <td class="text-capitalize">{{ \Carbon\Carbon::parse($item->created_at)->locale('it')->isoFormat('D MMMM YYYY') }}</td>
+                    <td>{{ $item->user_mail }}</td>
+                    <td class="review-text">{{ $item->comment }}</td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 @endsection
 
+<style>
+    /* Gestisci il wrapping del testo lungo nelle recensioni */
+    .review-text {
+        max-width: 300px; /* Modifica la larghezza massima in base alle tue esigenze */
+        overflow-wrap: break-word;
+    }
+</style>
