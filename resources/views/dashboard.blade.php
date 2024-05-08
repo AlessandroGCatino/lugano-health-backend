@@ -10,7 +10,7 @@
 
     <div class="container d-flex py-5">
 
-        <div class="d-white-bg rounded-4 p-5 d-green-color mx-auto mx-md-4 mx-sm-4 ">
+        <div class="d-white-bg rounded-4 p-5 d-green-color mx-auto mx-md-4 mx-sm-4 col-lg-12">
             <div class="row py-4">
                 <figure class="col-md-2 col-sm-3 d-flex align-items-center justify-content-center">
                     @if (session('doctor')->ProfilePic === null)
