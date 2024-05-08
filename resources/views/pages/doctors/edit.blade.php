@@ -4,23 +4,23 @@
 
 @section('content')
 
-<div id="dashboard" class="px-5 pb-3 pt-1 d-green-bg">
+<div id="dashboard" class="px-5 pb-5 pt-1 d-green-bg">
     
     <div class="row align-items-center mb-3">
 
         <hr class="my-0 col-8">
-        <h2 class="fw-bold text-end s-yellow-color col-4">MODIFICA PROFILO</h2>
 
     </div>
-    
+    <h2 class="fw-bold text-end s-yellow-color ">MODIFICA PROFILO</h2>
     <div class="d-white-bg rounded-4 p-5 d-green-color">
         
-        <form action="{{ route('doctors.update', $doctor->slug) }}" method="POST" enctype="multipart/form-data" id="editDataForm" class="row">
+        
+        <form action="{{ route('doctors.update', $doctor->slug) }}" method="POST" enctype="multipart/form-data" id="editDataForm" class="row ">
             @csrf
             @method('PUT')
             
             <!-- LEFT SIDE FORM -->
-            <div class="col-6">
+            <div class="col-md-6 d-flex flex-column">
 
                 <!-- NAME -->
                 <div class="mb-4 row">
@@ -118,66 +118,49 @@
             </div>
             
             <!-- RIGHT SIDE FORM -->
-            <div class="col-6 border-start border-success">
+            <div class="col-md-6 col-12 flex-column">
 
                 <!-- CV -->
                 <div class="mb-4 row">
-
                     <label for="CV" class="col-md-4 col-form-label text-md-right">CV (PDF, DOC, DOCX)</label>
                     <div class="col-md-8">
-            
                         <input type="file" class="form-control" id="CV" name="CV">
-            
                         @error('CV')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-            
                         <ul id="cvFileError" class="mt-1 alert alert-danger p-2 d-none">
-                            <li class='text-danger fw-bold ms-4'>Il file CV deve essere in formato PDF, DOC, o DOCX
-                            </li>
+                            <li class='text-danger fw-bold ms-4'>Il file CV deve essere in formato PDF, DOC, o DOCX</li>
                         </ul>
-            
                         @if ($doctor->CV)
                             <div class="my-1">
-            
                                 <label for="old-cv" class="form-label mt-3">Il tuo vecchio curriculum:</label>
                                 <div class="row">
-            
                                     <div class="col-12">
                                         <embed src="{{ asset('/storage/' . $doctor->CV) }}" width="300" height="480" id="old-cv" />
                                     </div>
                                 </div>
-            
                             </div>
                         @else
                             <div class="text-center mt-2"> Non hai inserito un curriculum</div>
                         @endif
-            
                     </div>
-            
                 </div>
             
                 <!-- PROFILE PIC -->
                 <div class="mb-4 row">
                     <label for="profile_pic" class="col-md-4 col-form-label text-md-right mt-4">IMMAGINE PROFILO</label>
-            
                     <div class="col-md-8">
-            
                         <input type="file" class="form-control mt-4" id="profile_pic" name="profile_pic">
-            
                         @error('profile_pic')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-            
                         <ul id="profilePicFileError" class="mt-1 alert alert-danger p-2 d-none">
-                            <li class='text-danger fw-bold ms-4'>La foto profilo deve essere in formato JPEG, JPG o PNG
-                            </li>
+                            <li class='text-danger fw-bold ms-4'>La foto profilo deve essere in formato JPEG, JPG o PNG</li>
                         </ul>
-            
                         @if ($doctor->ProfilePic)
                             <div class="my-3">
                                 <label for="old_profile_pic" class="form-label">La tua vecchia foto profilo:</label>
@@ -191,10 +174,10 @@
                             <div class="text-center mt-2"> Non hai inserito una foto profilo</div>
                         @endif
                     </div>
-            
                 </div>
             
             </div>
+            
                             
             <!-- BOTTOM FORM -->
             <div class="col-12 border-top border-success pt-4">
@@ -270,3 +253,7 @@
         
 
 @endsection
+
+<style>
+   
+</style>

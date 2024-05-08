@@ -24,7 +24,7 @@
                                             <td>{{ $message->name }}</td>
                                             <td>{{ \Carbon\Carbon::parse($message->created_at)->format('j F Y') }}</td>
                                             <td>{{ $message->email }}</td>
-                                            <td>{{ $message->message }}</td>
+                                            <td class="messages">{{ $message->message }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -36,3 +36,10 @@
         </div>
     </div>
 @endsection
+
+<style>
+    .messages{
+        max-width: 300px;
+        overflow-wrap: break-word;
+    }
+</style>
