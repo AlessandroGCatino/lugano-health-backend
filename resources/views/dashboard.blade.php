@@ -10,9 +10,14 @@ $rating = floor(session('doctor')->voteRating);
 
 ?>
 
-<div class="dash-container px-0 d-green-bg py-4">
+<div class="dash-container px-5 d-green-bg py-4">
 
-    <hr class="my-0">
+    <div class="row align-items-center mb-3 mt-4">
+
+        <hr class="my-0 col-7">
+        <h2 class="fw-bold text-end s-yellow-color col-5">PANNELLO DI CONTROLLO</h2>
+
+    </div>
 
     <div class="container d-flex py-5">
 
