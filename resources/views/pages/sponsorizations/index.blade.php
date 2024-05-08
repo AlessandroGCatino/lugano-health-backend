@@ -53,15 +53,15 @@
       <h2 class="fw-bold">Massimizza la Tua Visibilità</h2>
   </div>
   <div class="card-body">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-              <div class="col h-100">
-                  <div class="card p-3 shadow my-4">
+      <div class=" row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+              <div class="col h-100 ">
+                  <div class="card p-3 shadow my-4 border ">
                       <h3>{{ $sponsorizations[0]->name }}</h3>
-                      <p> {{ $sponsorizations[0]->description }} </p>
+                      <p class="pb-4"> {{ $sponsorizations[0]->description }} </p>
                       <p><span class="fw-bold">Prezzo</span>: {{ $sponsorizations[0]->price }}€</p> 
                       <p><span class="fw-bold">Durata</span>: {{ $sponsorizations[0]->durata }}h</p>
                       <a href="{{route("token", $sponsorizations[0])}}" class="btn rounded-pill btn-primary">
-                          <button class="btn">
+                          <button class="btn ">
                               Scegli
                           </button>
                       </a>
@@ -81,7 +81,7 @@
                   </div>
               </div>
               <div class="col h-100 ">
-                  <div class="card p-3 shadow my-4">
+                  <div class="card-1 card p-3 shadow my-4">
                       <h3>{{ $sponsorizations[2]->name }}</h3>
                       <p> {{ $sponsorizations[2]->description }} </p>
                       <p><span class="fw-bold">Prezzo</span>: {{ $sponsorizations[2]->price }}€</p> 
@@ -99,3 +99,6 @@
 </div>
 </div>
 @endsection
+
+<style>
+</style>

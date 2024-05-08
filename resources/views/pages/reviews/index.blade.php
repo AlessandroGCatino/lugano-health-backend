@@ -6,12 +6,13 @@
 
   <h1 class="mt-2 fw-bold">Le tue recensioni</h1>
     
-  <table class="table table-striped mt-4">
+  <div class="table-responsive mt-4">
+    <table class="table table-striped">
       <thead>
         <tr>
-          <th class="col-3">Nome Utente</th>
-          <th>Recensione</th>
-          <th>Lasciata il</th>
+          <th class="col">Nome Utente</th>
+          <th class="col">Recensione</th>
+          <th class="col">Lasciata il</th>
         </tr>
       </thead>
       <tbody>
@@ -19,7 +20,7 @@
           @foreach ( $reviews as $item )
           <tr>
               <td>{{$item->user_name}}</td>
-              <td>{{ $item->comment }}</td>
+              <td class="review-text">{{ $item->comment }}</td>
               <td>{{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</td>
             </tr>
           @endforeach
@@ -31,3 +32,10 @@
 
 @endsection
 
+<style>
+    /* Gestisci il wrapping del testo lungo nelle recensioni */
+    .review-text {
+        max-width: 300px; /* Modifica la larghezza massima in base alle tue esigenze */
+        overflow-wrap: break-word;
+    }
+</style>
