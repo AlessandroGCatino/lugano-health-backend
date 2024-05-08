@@ -81,7 +81,7 @@
 </main>
 
 <footer class="d-green-bg p-5">
-    <div class="border rounded-3 p-3 d-flex justify-content-between mb-4">
+    <div class="border rounded-3 p-3 d-flex flex-column flex-md-row justify-content-between mb-4">
 
         <div class="d-flex flex-column gap-3">
             <svg class="me-5" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" fill="gold" viewBox="0 0 384 512">
