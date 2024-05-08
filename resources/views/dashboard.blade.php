@@ -64,7 +64,7 @@ $rating = floor(session('doctor')->voteRating);
 </div>
 
 <div class="d-flex flex-column justify-content-center align-items-center mx-3 mt-4 mb-3 gap-3">
-    <h3 class="d-green-color italic">“Curare a volte, alleviare spesso, confortare sempre.”</h3>
+    <h3 class="d-green-color">“Curare a volte, alleviare spesso, confortare sempre.”</h3>
     <p>-Ippocrate</p>
 </div>
 
